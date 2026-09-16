@@ -13,7 +13,7 @@ export function Contact({ onShowToast }) {
     navigator.clipboard.writeText(contactData.email);
     setCopiedEmail(true);
     if (onShowToast) {
-      onShowToast('📋 Email copied to clipboard!', 'info');
+      onShowToast('Email copied', 'success');
     }
     setTimeout(() => setCopiedEmail(false), 2500);
   };
@@ -24,7 +24,7 @@ export function Contact({ onShowToast }) {
     navigator.clipboard.writeText(contactData.phone);
     setCopiedPhone(true);
     if (onShowToast) {
-      onShowToast('📞 Phone number copied to clipboard!', 'info');
+      onShowToast('Phone copied', 'success');
     }
     setTimeout(() => setCopiedPhone(false), 2500);
   };

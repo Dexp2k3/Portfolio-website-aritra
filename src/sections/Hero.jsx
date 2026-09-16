@@ -5,10 +5,10 @@ import { BehanceIcon, FacebookIcon, InstagramIcon } from '../components/icons/Br
 import aritraPortrait from '../assets/aritra-portrait.jpg';
 
 const funGreetings = [
-  "👋 Hey there! Welcome to my creative portfolio.",
-  "✨ Designing interfaces that feel simple, meaningful, and engaging.",
-  "⚡ Passionate about clean visuals, modern systems, and intuitive UX!",
-  "🚀 Available for full-time roles & high-impact design challenges.",
+  "Welcome to my portfolio",
+  "Designing intuitive UX",
+  "Crafting visual systems",
+  "Available for new roles",
 ];
 
 export function Hero({ onShowToast }) {
@@ -43,7 +43,7 @@ export function Hero({ onShowToast }) {
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Status / Availability Badge */}
             <div
-              onClick={() => onShowToast && onShowToast('💼 Ready for full-time design roles & freelance projects!', 'success')}
+              onClick={() => onShowToast && onShowToast('Available for projects', 'success')}
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 text-xs font-mono mb-5 w-fit select-none shadow-xs hover:shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer group"
               title="Click to learn more"
             >

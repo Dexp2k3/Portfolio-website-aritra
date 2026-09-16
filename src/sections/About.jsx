@@ -135,14 +135,14 @@ export function About({ onShowToast }) {
   const handleToolClick = (toolName) => {
     setActiveTool(toolName);
     if (onShowToast) {
-      onShowToast(`🎨 ${toolName}: ${toolInsights[toolName]}`, 'info');
+      onShowToast(`${toolName} workflow active`, 'info');
     }
   };
 
   const handleAiToolClick = (toolName) => {
     setActiveAiTool(toolName);
     if (onShowToast) {
-      onShowToast(`✨ ${toolName}: ${aiToolInsights[toolName]}`, 'info');
+      onShowToast(`${toolName} workflow active`, 'info');
     }
   };
 
@@ -150,7 +150,7 @@ export function About({ onShowToast }) {
     if (item.hasEmbed) {
       setActiveEmbedProject(item);
       if (onShowToast) {
-        onShowToast(`🚀 Opening ${item.title} ${item.sub} Case Study...`, 'info');
+        onShowToast('Opening case study', 'info');
       }
     }
   };

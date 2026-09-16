@@ -1,48 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
-import { cn } from '../../utils/helpers';
+import { CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 
 const icons = {
   success: CheckCircle2,
   error: AlertCircle,
-  info: Info,
+  info: Sparkles,
 };
 
-const styles = {
-  success: 'bg-white dark:bg-zinc-900 border-emerald-500/40 text-emerald-800 dark:text-emerald-300 shadow-xl',
-  error: 'bg-white dark:bg-zinc-900 border-red-500/40 text-red-800 dark:text-red-300 shadow-xl',
-  info: 'bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 shadow-xl',
+const iconColors = {
+  success: 'text-emerald-400',
+  error: 'text-rose-400',
+  info: 'text-blue-400',
 };
 
 export function Toast({ toast, onClose }) {
-  if (typeof document === 'undefined' || !toast) return null;
+  const [visible, setVisible] = useState(false);
+  const [currentToast, setCurrentToast] = useState(null);
 
-  const Icon = icons[toast.type] || icons.info;
+  useEffect(() => {
+    if (toast) {
+      setCurrentToast(toast);
+      const frame = requestAnimationFrame(() => {
+        setVisible(true);
+      });
+      return () => cancelAnimationFrame(frame);
+    } else {
+      setVisible(false);
+      const timer = setTimeout(() => {
+        setCurrentToast(null);
+      }, 220);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  if (typeof document === 'undefined' || !currentToast) return null;
+
+  const Icon = icons[currentToast.type] || icons.info;
+  const iconColor = iconColors[currentToast.type] || iconColors.info;
 
   const toastElement = (
-    <div className="fixed top-5 left-4 right-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto sm:max-w-md z-[110] animate-in fade-in slide-in-from-top-4 duration-200 pointer-events-none">
+    <div className="fixed top-5 left-0 right-0 flex justify-center z-[110] px-4 pointer-events-none select-none">
       <div
         role="status"
         aria-live="polite"
-        className={cn(
-          'flex items-center gap-3 px-4 py-3 rounded-xl border shadow-xl backdrop-blur-md w-full pointer-events-auto',
-          styles[toast.type] || styles.info
-        )}
+        onClick={onClose}
+        className={`pointer-events-auto cursor-pointer inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border shadow-2xl backdrop-blur-xl transition-all duration-200 ease-out transform ${
+          visible
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 -translate-y-3 scale-95'
+        } bg-zinc-950/90 dark:bg-zinc-900/95 border-zinc-800/80 dark:border-zinc-700/60 shadow-black/30 hover:border-zinc-600 dark:hover:border-zinc-500 active:scale-98`}
       >
-        <Icon className="w-5 h-5 flex-shrink-0" />
-        <p className="text-sm font-medium pr-2 break-words flex-1">{toast.message}</p>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Dismiss notification"
-          className="p-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors ml-auto flex-shrink-0 cursor-pointer"
-        >
-          <X className="w-4 h-4" />
-        </button>
+        <Icon className={`w-4 h-4 flex-shrink-0 ${iconColor}`} />
+        <span className="text-xs sm:text-sm font-medium tracking-tight text-zinc-100 whitespace-nowrap">
+          {currentToast.message}
+        </span>
       </div>
     </div>
   );
 
   return createPortal(toastElement, document.body);
 }
+

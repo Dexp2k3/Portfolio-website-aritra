@@ -51,7 +51,7 @@ export function Resume({ onShowToast }) {
       document.body.removeChild(link);
 
       if (onShowToast) {
-        onShowToast(`📄 ${fileName} downloaded successfully!`, 'success');
+        onShowToast('Resume downloaded', 'success');
       }
 
       // Reset back to idle state after 3.5s
