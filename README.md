@@ -1,16 +1,29 @@
-# React + Vite
+# Aritra Mondal — Graphic & UI/UX Designer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Modern, minimal, editorial digital portfolio for Aritra Mondal showcasing graphic design disciplines, UI/UX case studies, interactive tools, downloadable resume, and direct connect channels.
 
-Currently, two official plugins are available:
+## 🚀 Live Tech Stack
+- **Framework**: React 19
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React & Custom Brand SVGs
+- **Theme**: Dark / Light Mode with View Transitions API circular ripple
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Development & Production
 
-## React Compiler
+```bash
+# Install dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Run development server
+npm run dev
 
-## Expanding the Oxlint configuration
+# Build production bundle
+npm run build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+# Preview production build
+npm run preview
+```
+
+## 📄 License
+MIT License — Copyright (c) 2026 Dexp2k3 / Aritra Mondal.
