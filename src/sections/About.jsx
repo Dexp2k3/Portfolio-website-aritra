@@ -216,21 +216,21 @@ export function About({ onShowToast }) {
                     spotlight={true}
                     tilt={true}
                     onClick={() => handleDisciplineClick(item)}
-                    className={`p-4.5 sm:p-5 flex flex-col justify-between min-h-[140px] sm:min-h-[150px] transition-all duration-300 active:scale-[0.98] cursor-pointer ${
+                    className={`p-5 sm:p-6 flex flex-col justify-between min-h-[160px] sm:min-h-[165px] transition-all duration-300 active:scale-[0.98] cursor-pointer ${
                       item.hasEmbed
                         ? 'hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1 group/card'
                         : 'cursor-default'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60 flex items-center justify-center text-zinc-700 dark:text-zinc-300 group-hover/card:text-blue-600 dark:group-hover/card:text-white group-hover/card:border-blue-300 dark:group-hover/card:border-blue-500/40 group-hover/card:scale-105 transition-all duration-300">
+                      <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60 flex items-center justify-center text-zinc-700 dark:text-zinc-300 group-hover/card:text-blue-600 dark:group-hover/card:text-white group-hover/card:border-blue-300 dark:group-hover/card:border-blue-500/40 group-hover/card:scale-105 transition-all duration-300">
                         <IconComponent className="w-4 h-4" />
                       </div>
 
                       {/* Featured Project Trigger Tag & Direct External Icon */}
                       {item.hasEmbed && (
                         <div className="flex items-center gap-1.5">
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/30 group-hover/card:scale-105 transition-all duration-200">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/30 group-hover/card:scale-105 transition-all duration-200">
                             <span>Case Study</span>
                           </span>
 
@@ -241,7 +241,7 @@ export function About({ onShowToast }) {
                             onClick={(e) => e.stopPropagation()}
                             title="Open directly on Behance"
                             aria-label={`Open ${item.title} case study on Behance`}
-                            className="min-w-[32px] min-h-[32px] flex items-center justify-center p-1.5 rounded-lg text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95"
+                            className="min-w-[34px] min-h-[34px] flex items-center justify-center p-1.5 rounded-lg text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
@@ -249,8 +249,8 @@ export function About({ onShowToast }) {
                       )}
                     </div>
 
-                    <div className="mt-4">
-                      <div className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight leading-snug group-hover/card:text-blue-600 dark:group-hover/card:text-blue-400 transition-colors flex items-center justify-between">
+                    <div className="mt-5">
+                      <div className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white tracking-tight leading-snug group-hover/card:text-blue-600 dark:group-hover/card:text-blue-400 transition-colors flex items-center justify-between">
                         <span>{item.title}</span>
                         {item.hasEmbed && (
                           <span className="text-[11px] font-mono font-medium text-blue-600 dark:text-blue-400 opacity-90 sm:opacity-0 sm:group-hover/card:opacity-100 sm:translate-x-[-3px] sm:group-hover/card:translate-x-0 transition-all duration-200">
@@ -258,7 +258,7 @@ export function About({ onShowToast }) {
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                      <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
                         {item.sub}
                       </div>
                     </div>
