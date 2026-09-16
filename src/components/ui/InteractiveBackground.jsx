@@ -108,65 +108,65 @@ export function InteractiveBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 select-none">
       {/* Subtle Architectural Dot Matrix Grid with Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.035)_1px,transparent_0)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000_50%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.025)_1px,transparent_0)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000_50%,transparent_100%)]" />
 
-      {/* Interactive Cursor Spotlight Glow (Desktop Pointer Only) */}
+      {/* Interactive Cursor Spotlight Glow (Desktop Pointer Only) - Refined and Softer */}
       {hasPointer && (
         <div
-          className="absolute rounded-full w-[500px] h-[500px] blur-[110px] opacity-60 dark:opacity-80 transition-opacity duration-300 will-change-transform pointer-events-none"
+          className="absolute rounded-full w-[450px] h-[450px] blur-[120px] opacity-35 dark:opacity-45 transition-opacity duration-300 will-change-transform pointer-events-none"
           style={{
-            transform: `translate3d(${mousePos.x - 250}px, ${mousePos.y - 250}px, 0)`,
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.06) 45%, transparent 70%)',
+            transform: `translate3d(${mousePos.x - 225}px, ${mousePos.y - 225}px, 0)`,
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.04) 45%, transparent 70%)',
           }}
         />
       )}
 
-      {/* Primary Ambient Aurora (Deep Electric Blue - slow drift 26s) */}
-      <div className="absolute top-[-10%] left-[-5%] w-[420px] sm:w-[680px] h-[420px] sm:h-[680px] rounded-full bg-gradient-to-br from-blue-500/10 via-indigo-600/5 to-transparent dark:from-blue-600/[0.14] dark:via-indigo-500/[0.08] dark:to-transparent blur-[120px] sm:blur-[140px] animate-aurora-1 will-change-transform" />
+      {/* Primary Ambient Aurora (Deep Electric Blue - slow drift 26s, calm opacity) */}
+      <div className="absolute top-[-10%] left-[-5%] w-[420px] sm:w-[680px] h-[420px] sm:h-[680px] rounded-full bg-gradient-to-br from-blue-500/[0.06] via-indigo-600/[0.03] to-transparent dark:from-blue-600/[0.08] dark:via-indigo-500/[0.04] dark:to-transparent blur-[130px] sm:blur-[150px] animate-aurora-1 will-change-transform" />
 
-      {/* Secondary Ambient Aurora (Cyan / Sky Glow - slow drift 30s) */}
-      <div className="absolute top-[42%] right-[-10%] w-[380px] sm:w-[620px] h-[380px] sm:h-[620px] rounded-full bg-gradient-to-bl from-cyan-500/10 via-blue-600/5 to-transparent dark:from-cyan-500/[0.12] dark:via-blue-600/[0.08] dark:to-transparent blur-[120px] sm:blur-[150px] animate-aurora-2 will-change-transform" />
+      {/* Secondary Ambient Aurora (Cyan / Sky Glow - slow drift 30s, calm opacity) */}
+      <div className="absolute top-[42%] right-[-10%] w-[380px] sm:w-[620px] h-[380px] sm:h-[620px] rounded-full bg-gradient-to-bl from-cyan-500/[0.05] via-blue-600/[0.03] to-transparent dark:from-cyan-500/[0.07] dark:via-blue-600/[0.04] dark:to-transparent blur-[130px] sm:blur-[160px] animate-aurora-2 will-change-transform" />
 
-      {/* Tertiary Ambient Aurora (Subtle Violet Depth - slow drift 22s) */}
-      <div className="absolute bottom-[-10%] left-[20%] w-[360px] sm:w-[580px] h-[360px] sm:h-[580px] rounded-full bg-gradient-to-tr from-purple-600/8 via-blue-500/5 to-transparent dark:from-purple-600/[0.10] dark:via-blue-500/[0.06] dark:to-transparent blur-[120px] sm:blur-[140px] animate-aurora-3 will-change-transform" />
+      {/* Tertiary Ambient Aurora (Subtle Violet Depth - slow drift 22s, calm opacity) */}
+      <div className="absolute bottom-[-10%] left-[20%] w-[360px] sm:w-[580px] h-[360px] sm:h-[580px] rounded-full bg-gradient-to-tr from-purple-600/[0.04] via-blue-500/[0.02] to-transparent dark:from-purple-600/[0.05] dark:via-blue-500/[0.03] dark:to-transparent blur-[130px] sm:blur-[150px] animate-aurora-3 will-change-transform" />
 
-      {/* Cosmic Orbital Halo Rings (Responsive Scaling on Phone & Desktop) */}
-      <div className="absolute -top-[60px] -right-[60px] sm:top-[-80px] sm:right-[5%] pointer-events-none flex items-center justify-center">
+      {/* Cosmic Orbital Halo Rings (Subtle, non-intrusive) */}
+      <div className="absolute -top-[60px] -right-[60px] sm:top-[-80px] sm:right-[5%] pointer-events-none flex items-center justify-center opacity-70">
         {/* Outer Orbit (Dashed) */}
-        <div className="w-[360px] h-[360px] sm:w-[540px] sm:h-[540px] md:w-[720px] md:h-[720px] rounded-full border border-dashed border-blue-500/15 dark:border-blue-400/20 animate-spin-slow flex items-center justify-center">
+        <div className="w-[360px] h-[360px] sm:w-[540px] sm:h-[540px] md:w-[720px] md:h-[720px] rounded-full border border-dashed border-blue-500/10 dark:border-blue-400/12 animate-spin-slow flex items-center justify-center">
           {/* Outer Orbit Satellite Accent Node */}
-          <div className="w-1.5 h-1.5 rounded-full bg-blue-400/70 shadow-[0_0_8px_#60a5fa] absolute top-4 left-1/4" />
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-400/50 shadow-[0_0_6px_#60a5fa] absolute top-4 left-1/4" />
         </div>
 
         {/* Inner Counter-Rotating Orbit with Glowing Cyan Satellite */}
-        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[480px] md:h-[480px] rounded-full border border-blue-500/20 dark:border-cyan-400/25 animate-spin-reverse flex items-center justify-center">
-          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_12px_#22d3ee]" />
-          <div className="absolute -bottom-1 left-1/3 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_#818cf8]" />
+        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[480px] md:h-[480px] rounded-full border border-blue-500/12 dark:border-cyan-400/15 animate-spin-reverse flex items-center justify-center">
+          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400/60 shadow-[0_0_8px_#22d3ee]" />
+          <div className="absolute -bottom-1 left-1/3 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400/50 shadow-[0_0_6px_#818cf8]" />
         </div>
 
         {/* Core Pulsing Cosmic Glow */}
-        <div className="absolute w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] rounded-full bg-gradient-to-tr from-cyan-500/10 via-blue-600/10 to-transparent dark:from-cyan-400/15 dark:via-blue-600/15 blur-xl sm:blur-2xl animate-pulse" />
+        <div className="absolute w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] rounded-full bg-gradient-to-tr from-cyan-500/[0.05] via-blue-600/[0.05] to-transparent dark:from-cyan-400/[0.08] dark:via-blue-600/[0.06] blur-xl sm:blur-2xl animate-pulse" />
       </div>
 
-      {/* Cyber Shooting Light Streaks */}
-      <div className="absolute top-[8%] left-[10%] w-48 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-1" />
-      <div className="absolute top-[35%] left-[25%] w-56 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400/60 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-2" />
+      {/* Cyber Shooting Light Streaks (Softened) */}
+      <div className="absolute top-[8%] left-[10%] w-48 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/35 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-1" />
+      <div className="absolute top-[35%] left-[25%] w-56 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-2" />
 
-      {/* Subtle Radar Matrix Scan Wave */}
-      <div className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/30 dark:via-cyan-400/40 to-transparent blur-[1px] animate-grid-wave" />
+      {/* Subtle Radar Matrix Scan Wave (Softened) */}
+      <div className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/15 dark:via-cyan-400/20 to-transparent blur-[1px] animate-grid-wave" />
 
-      {/* Rising Cosmic Stardust Embers */}
+      {/* Rising Cosmic Stardust Embers (Softened, gentle twinkle) */}
       {[
-        { id: 'sd-1', left: '15%', bottom: '20%', size: 'w-1 h-1', dur: '9s', del: '0s', color: 'bg-cyan-400/60' },
-        { id: 'sd-2', left: '28%', bottom: '15%', size: 'w-1.5 h-1.5', dur: '12s', del: '2.5s', color: 'bg-blue-400/50' },
-        { id: 'sd-3', left: '42%', bottom: '25%', size: 'w-1 h-1', dur: '8.5s', del: '4s', color: 'bg-indigo-300/60' },
-        { id: 'sd-4', left: '60%', bottom: '18%', size: 'w-1.5 h-1.5', dur: '11s', del: '1.2s', color: 'bg-cyan-300/60' },
-        { id: 'sd-5', left: '75%', bottom: '22%', size: 'w-1 h-1', dur: '10s', del: '3.8s', color: 'bg-sky-400/50' },
-        { id: 'sd-6', left: '88%', bottom: '12%', size: 'w-1 h-1', dur: '7.5s', del: '5.5s', color: 'bg-blue-400/60' },
+        { id: 'sd-1', left: '15%', bottom: '20%', size: 'w-1 h-1', dur: '9s', del: '0s', color: 'bg-cyan-400/35' },
+        { id: 'sd-2', left: '28%', bottom: '15%', size: 'w-1.5 h-1.5', dur: '12s', del: '2.5s', color: 'bg-blue-400/25' },
+        { id: 'sd-3', left: '42%', bottom: '25%', size: 'w-1 h-1', dur: '8.5s', del: '4s', color: 'bg-indigo-300/35' },
+        { id: 'sd-4', left: '60%', bottom: '18%', size: 'w-1.5 h-1.5', dur: '11s', del: '1.2s', color: 'bg-cyan-300/35' },
+        { id: 'sd-5', left: '75%', bottom: '22%', size: 'w-1 h-1', dur: '10s', del: '3.8s', color: 'bg-sky-400/25' },
+        { id: 'sd-6', left: '88%', bottom: '12%', size: 'w-1 h-1', dur: '7.5s', del: '5.5s', color: 'bg-blue-400/35' },
       ].map((ember) => (
         <div
           key={ember.id}
-          className={`absolute rounded-full pointer-events-none animate-stardust shadow-[0_0_6px_currentColor] ${ember.size} ${ember.color}`}
+          className={`absolute rounded-full pointer-events-none animate-stardust shadow-[0_0_4px_currentColor] ${ember.size} ${ember.color}`}
           style={{
             left: ember.left,
             bottom: ember.bottom,
@@ -176,7 +176,7 @@ export function InteractiveBackground() {
         />
       ))}
 
-      {/* Floating Designer Glyphs with Parallax */}
+      {/* Floating Designer Glyphs with Parallax (Softened) */}
       {DESIGN_ELEMENTS.map((el) => {
         const offsetX = hasPointer ? (mousePos.x / 1200 - 0.5) * 16 : 0;
         const offsetY = hasPointer ? (mousePos.y / 900 - 0.5) * 16 : 0;
@@ -186,7 +186,7 @@ export function InteractiveBackground() {
         return (
           <div
             key={el.id}
-            className={`absolute transition-transform duration-500 ease-out text-zinc-400/20 dark:text-zinc-500/25 ${
+            className={`absolute transition-transform duration-500 ease-out text-zinc-400/[0.12] dark:text-zinc-500/[0.14] ${
               isMobileHidden ? 'hidden sm:block' : ''
             }`}
             style={{
