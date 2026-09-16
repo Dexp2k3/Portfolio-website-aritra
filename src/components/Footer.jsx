@@ -9,7 +9,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-900 bg-zinc-100/70 dark:bg-[#080b11] text-zinc-500 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] transition-colors duration-300">
+    <footer className="relative z-10 border-t border-zinc-200 dark:border-zinc-900 bg-zinc-100/70 dark:bg-[#080b11] text-zinc-500 pt-10 pb-[max(2.5rem,env(safe-area-inset-bottom))] transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs font-mono">
           

@@ -106,7 +106,7 @@ export function InteractiveBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 select-none">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 select-none">
       {/* Subtle Architectural Dot Matrix Grid with Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.035)_1px,transparent_0)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000_50%,transparent_100%)]" />
 

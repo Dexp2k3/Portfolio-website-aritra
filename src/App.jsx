@@ -51,7 +51,7 @@ export default function App() {
       <Navbar toggleTheme={toggleTheme} isDark={isDark} />
 
       {/* Main Content Sections */}
-      <main className="flex-1 animate-page-enter">
+      <main className="relative z-10 flex-1 animate-page-enter">
         <Hero onShowToast={showToast} />
         <About onShowToast={showToast} />
         <Resume onShowToast={showToast} />
