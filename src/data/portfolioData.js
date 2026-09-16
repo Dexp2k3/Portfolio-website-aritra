@@ -78,7 +78,7 @@ export const aboutData = {
 export const resumeData = {
   sectionNumber: "02",
   sectionTitle: "MY RESUME",
-  description: "Take a look at my official resume to know more about my education, skills, design experience, and achievements.",
+  description: "Take a look at my professional profile to know more about my education, skills, design experience, and achievements.",
   fileName: "Aritra_Mondal_Resume.png",
   fileInfo: "Official Document · 2026",
   downloadUrl: "/Aritra_Mondal_Resume.png",

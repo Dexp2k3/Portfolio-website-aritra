@@ -83,7 +83,7 @@ export function Resume({ onShowToast }) {
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 dark:text-white mb-3 flex items-center gap-2.5">
-                <span>Official Resume</span>
+                <span>Professional Profile</span>
                 <Sparkles className="w-5 h-5 text-blue-500 hidden sm:inline" />
               </h3>
 
@@ -314,7 +314,7 @@ export function Resume({ onShowToast }) {
           setIsModalOpen(false);
           setModalZoom(1);
         }}
-        title="Aritra Mondal — Official Resume"
+        title="Aritra Mondal — Professional Profile"
         subtitle="Graphic & UI/UX Designer · Single Page Resume"
         maxWidth="max-w-5xl"
       >
