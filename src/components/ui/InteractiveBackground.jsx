@@ -20,10 +20,24 @@ export function InteractiveBackground() {
     return false;
   });
   const [sparks, setSparks] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
   const targetPosRef = useRef({ x: -1000, y: -1000 });
   const currentPosRef = useRef({ x: -1000, y: -1000 });
   const isRunningRef = useRef(false);
   const animFrameRef = useRef(null);
+
+  // Track active press/drag state for spotlight intensity feedback
+  useEffect(() => {
+    const handleMouseDown = () => setIsDragging(true);
+    const handleMouseUp = () => setIsDragging(false);
+
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
 
   // Check if device supports true hover cursor (desktops/laptops vs mobile touch)
   useEffect(() => {
@@ -110,13 +124,19 @@ export function InteractiveBackground() {
       {/* Subtle Architectural Dot Matrix Grid with Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.025)_1px,transparent_0)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,#000_50%,transparent_100%)]" />
 
-      {/* Interactive Cursor Spotlight Glow (Desktop Pointer Only) - Refined and Softer */}
+      {/* Interactive Cursor Spotlight Glow (Desktop Pointer Only) - Elevated Hover & Dragging Interactivity */}
       {hasPointer && (
         <div
-          className="absolute rounded-full w-[450px] h-[450px] blur-[120px] opacity-35 dark:opacity-45 transition-opacity duration-300 will-change-transform pointer-events-none"
+          className={`absolute rounded-full blur-[110px] pointer-events-none transition-all duration-300 ease-out will-change-transform ${
+            isDragging
+              ? 'w-[520px] h-[520px] opacity-75 dark:opacity-85 scale-105'
+              : 'w-[480px] h-[480px] opacity-55 dark:opacity-65 scale-100'
+          }`}
           style={{
-            transform: `translate3d(${mousePos.x - 225}px, ${mousePos.y - 225}px, 0)`,
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.04) 45%, transparent 70%)',
+            transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) translate(-50%, -50%)`,
+            background: isDragging
+              ? 'radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, rgba(99, 102, 241, 0.10) 45%, rgba(34, 211, 238, 0.05) 60%, transparent 75%)'
+              : 'radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.06) 45%, transparent 70%)',
           }}
         />
       )}
