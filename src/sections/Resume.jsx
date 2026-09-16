@@ -117,14 +117,14 @@ export function Resume({ onShowToast }) {
               tilt={false}
               className="p-5 sm:p-6 flex flex-col gap-5 border-blue-500/20 dark:border-blue-500/20 shadow-md"
             >
-              {/* Card Meta Header */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
+              {/* Card Meta Header - Responsive Stack on Mobile */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+                <div className="flex items-center gap-3 min-w-0">
                   <div className="w-11 h-11 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-red-500 dark:text-red-400 flex items-center justify-center flex-shrink-0">
                     <FileText className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-zinc-900 dark:text-white tracking-tight">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm font-semibold text-zinc-900 dark:text-white tracking-tight truncate">
                       {downloadFormat === 'pdf' ? 'Aritra_Mondal_Resume.pdf' : 'Aritra_Mondal_Resume.png'}
                     </h4>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 font-mono flex items-center gap-2">
@@ -135,14 +135,14 @@ export function Resume({ onShowToast }) {
                   </div>
                 </div>
 
-                {/* Format Toggle (PNG vs PDF) - Mobile & Desktop Touch Optimized */}
-                <div className="flex items-center p-0.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/60 text-[11px] font-mono">
+                {/* Format Toggle (PNG vs PDF) - Dedicated Mobile & Desktop Space */}
+                <div className="flex items-center self-start sm:self-auto p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700/60 text-xs font-mono flex-shrink-0">
                   <button
                     type="button"
                     onClick={() => setDownloadFormat('png')}
-                    className={`px-3 py-1.5 min-h-[32px] rounded-md transition-all cursor-pointer flex items-center justify-center font-bold ${
+                    className={`px-3.5 py-1.5 min-h-[34px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
                       downloadFormat === 'png'
-                        ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                        ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-sm'
                         : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
                     }`}
                   >
@@ -151,9 +151,9 @@ export function Resume({ onShowToast }) {
                   <button
                     type="button"
                     onClick={() => setDownloadFormat('pdf')}
-                    className={`px-3 py-1.5 min-h-[32px] rounded-md transition-all cursor-pointer flex items-center justify-center font-bold ${
+                    className={`px-3.5 py-1.5 min-h-[34px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
                       downloadFormat === 'pdf'
-                        ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                        ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-sm'
                         : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
                     }`}
                   >
@@ -249,25 +249,27 @@ export function Resume({ onShowToast }) {
               <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl group-hover:border-blue-500/40">
                 
                 {/* Document Top Bar */}
-                <div className="flex items-center justify-between px-4 py-3 bg-zinc-50 dark:bg-zinc-950/60 border-b border-zinc-200 dark:border-zinc-800/80 select-none">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                    <span className="ml-2 text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400">
+                <div className="flex items-center justify-between gap-2 px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-50 dark:bg-zinc-950/60 border-b border-zinc-200 dark:border-zinc-800/80 select-none">
+                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                    </div>
+                    <span className="ml-1 sm:ml-2 text-[11px] sm:text-xs font-mono font-medium text-zinc-600 dark:text-zinc-400 truncate">
                       Aritra_Mondal_Resume.pdf
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       type="button"
                       onClick={() => setIsModalOpen(true)}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 transition-colors cursor-pointer flex-shrink-0"
                       title="View Fullscreen"
                     >
-                      <Maximize2 className="w-3 h-3" />
-                      <span className="text-[11px]">Fullscreen</span>
+                      <Maximize2 className="w-3 h-3 flex-shrink-0" />
+                      <span className="text-[11px] sm:text-xs whitespace-nowrap font-medium">Fullscreen</span>
                     </button>
                   </div>
                 </div>

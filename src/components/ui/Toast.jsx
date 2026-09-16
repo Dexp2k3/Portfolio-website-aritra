@@ -21,7 +21,7 @@ export function Toast({ toast, onClose }) {
   const Icon = icons[toast.type] || icons.info;
 
   const toastElement = (
-    <div className="fixed bottom-5 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-[110] animate-in fade-in slide-in-from-bottom-5 duration-200 pointer-events-none">
+    <div className="fixed top-5 left-4 right-4 sm:left-1/2 sm:-translate-x-1/2 sm:w-auto sm:max-w-md z-[110] animate-in fade-in slide-in-from-top-4 duration-200 pointer-events-none">
       <div
         role="status"
         aria-live="polite"

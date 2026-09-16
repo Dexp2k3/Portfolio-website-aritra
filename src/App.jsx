@@ -14,7 +14,7 @@ import { InteractiveBackground } from './components/ui/InteractiveBackground';
 
 export default function App() {
   const { toggleTheme, isDark } = useTheme();
-  const { toast, showToast, hideToast } = useToast();
+  const { toast, showToast, hideToast } = useToast(1000);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-zinc-50 dark:bg-[#080b11] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 overflow-x-hidden animate-page-enter">
+    <div className="relative min-h-screen bg-zinc-50 dark:bg-[#080b11] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 overflow-x-hidden">
       {/* Initial Load Cyber Glow Horizon Beam */}
       <div
         aria-hidden="true"
@@ -51,7 +51,7 @@ export default function App() {
       <Navbar toggleTheme={toggleTheme} isDark={isDark} />
 
       {/* Main Content Sections */}
-      <main className="flex-1">
+      <main className="flex-1 animate-page-enter">
         <Hero onShowToast={showToast} />
         <About onShowToast={showToast} />
         <Resume onShowToast={showToast} />

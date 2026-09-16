@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 
-export function useToast(duration = 4000) {
+export function useToast(duration = 1000) {
   const [toast, setToast] = useState(null);
   const timerRef = useRef(null);
 
