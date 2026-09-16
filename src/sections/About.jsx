@@ -268,12 +268,12 @@ export function About({ onShowToast }) {
             </div>
 
             {/* Tools I Use with Live Studio Insight Drawer */}
-            <Card spotlight={true} className="p-6">
-              <div className="flex items-center justify-between mb-4">
+            <Card spotlight={true} className="p-5 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 mb-4">
                 <span className="text-xs font-mono tracking-widest text-zinc-500 dark:text-zinc-400 uppercase select-none">
                   TOOLS I USE
                 </span>
-                <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+                <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 flex-shrink-0">
                   Tap to preview workflow
                 </span>
               </div>
@@ -354,18 +354,18 @@ export function About({ onShowToast }) {
             </Card>
 
             {/* AI Tools I Use with Live Studio Insight Drawer */}
-            <Card spotlight={true} className="p-6 border-purple-500/20 dark:border-purple-500/10">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
+            <Card spotlight={true} className="p-5 sm:p-6 border-purple-500/20 dark:border-purple-500/10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 mb-4">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-xs font-mono tracking-widest text-zinc-500 dark:text-zinc-400 uppercase select-none">
                     AI TOOLS I USE
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20 flex-shrink-0">
                     <Sparkles className="w-2.5 h-2.5" />
                     <span>Workflow</span>
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+                <span className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500 flex-shrink-0">
                   Tap to preview workflow
                 </span>
               </div>
