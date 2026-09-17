@@ -160,7 +160,7 @@ export function Navbar({ toggleTheme, isDark }) {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
         {/* Left: AM Monogram Logo & Nav links */}
         <div className="flex items-center gap-8 sm:gap-12">
           <a

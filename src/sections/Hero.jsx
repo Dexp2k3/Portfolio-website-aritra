@@ -31,12 +31,12 @@ export function Hero({ onShowToast }) {
   };
 
   return (
-    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden transition-colors duration-300">
+    <section id="home" className="relative pt-28 pb-14 sm:pt-32 sm:pb-16 md:pt-36 md:pb-20 lg:pt-32 lg:pb-20 overflow-hidden transition-colors duration-300">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-600/15 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-500/10 dark:bg-blue-500/10 blur-[130px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* LEFT COLUMN — INTRODUCTION */}
@@ -169,7 +169,7 @@ export function Hero({ onShowToast }) {
             </div>
 
             {/* Portrait Frame with glowing RGB flowing stroke */}
-            <div className="relative group max-w-[310px] sm:max-w-[360px] w-full">
+            <div className="relative group max-w-[310px] sm:max-w-[360px] lg:max-w-[370px] xl:max-w-[390px] w-full">
               {/* Outer Glowing RGB Border Shell (2.5px stroke width) */}
               <div className="relative p-[2.5px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.015]">
                 {/* Smooth Continuous Flowing RGB Conic Gradient */}
