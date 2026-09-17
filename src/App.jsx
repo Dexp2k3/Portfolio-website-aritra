@@ -30,6 +30,32 @@ export default function App() {
     return () => window.removeEventListener('scroll', updateScrollProgress);
   }, []);
 
+  // Drop active focus on touch and click so mobile Chrome never renders a focused object black box
+  useEffect(() => {
+    const handleClearFocus = (e) => {
+      const interactive = e.target?.closest?.('a, button, [role="button"]');
+      if (interactive && interactive.tagName !== 'INPUT' && interactive.tagName !== 'TEXTAREA') {
+        interactive.blur?.();
+      }
+      if (
+        document.activeElement &&
+        document.activeElement !== document.body &&
+        document.activeElement.tagName !== 'INPUT' &&
+        document.activeElement.tagName !== 'TEXTAREA'
+      ) {
+        document.activeElement.blur?.();
+      }
+    };
+
+    window.addEventListener('touchend', handleClearFocus, { passive: true });
+    window.addEventListener('click', handleClearFocus, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchend', handleClearFocus);
+      window.removeEventListener('click', handleClearFocus);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-zinc-50 dark:bg-[#080b11] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white transition-colors duration-300 overflow-x-hidden">
       {/* Initial Load Cyber Glow Horizon Beam */}

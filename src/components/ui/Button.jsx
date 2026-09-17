@@ -33,7 +33,7 @@ export function Button({
       type={type}
       disabled={disabled || isLoading}
       className={cn(
-        'inline-flex items-center justify-center font-medium transition-all duration-150 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+        'inline-flex items-center justify-center font-medium transition-all duration-150 select-none outline-none focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
         variants[variant] || variants.primary,
         sizes[size] || sizes.md,
         className

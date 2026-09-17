@@ -93,7 +93,7 @@ export function Hero({ onShowToast }) {
               <a
                 href="#resume"
                 onClick={scrollToResume}
-                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 font-medium text-sm hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-[0.98] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 overflow-hidden text-center min-h-[46px] outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 font-medium text-sm hover:bg-zinc-800 dark:hover:bg-zinc-200 sm:active:scale-[0.98] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 overflow-hidden text-center min-h-[46px] outline-none select-none touch-manipulation"
               >
                 <span>View Resume</span>
                 <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
@@ -103,7 +103,7 @@ export function Hero({ onShowToast }) {
                 href={personalInfo.behanceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:border-blue-500/40 dark:hover:border-zinc-700 active:scale-[0.98] hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 text-center min-h-[46px] overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:border-blue-500/40 dark:hover:border-zinc-700 sm:active:scale-[0.98] hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 text-center min-h-[46px] overflow-hidden outline-none select-none touch-manipulation"
               >
                 {/* Subtle Left-to-Right Light Reflection Shimmer */}
                 <div aria-hidden="true" className="shimmer-sweep">
@@ -121,7 +121,7 @@ export function Hero({ onShowToast }) {
                 href={personalInfo.behanceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg select-none touch-manipulation"
+                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none rounded-lg select-none touch-manipulation"
               >
                 <div className="w-7 h-7 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center group-hover:border-blue-500/40 dark:group-hover:border-zinc-700 group-hover:scale-110 transition-all shadow-xs overflow-hidden">
                   <BehanceIcon className="w-3.5 h-3.5" />
@@ -135,7 +135,7 @@ export function Hero({ onShowToast }) {
                 href={personalInfo.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg select-none touch-manipulation"
+                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none rounded-lg select-none touch-manipulation"
               >
                 <div className="w-7 h-7 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center group-hover:border-blue-500/40 dark:group-hover:border-zinc-700 group-hover:scale-110 transition-all shadow-xs overflow-hidden">
                   <InstagramIcon className="w-3.5 h-3.5" />
@@ -149,7 +149,7 @@ export function Hero({ onShowToast }) {
                 href={personalInfo.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg select-none touch-manipulation"
+                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none rounded-lg select-none touch-manipulation"
               >
                 <div className="w-7 h-7 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center group-hover:border-blue-500/40 dark:group-hover:border-zinc-700 group-hover:scale-110 transition-all shadow-xs overflow-hidden">
                   <FacebookIcon className="w-3.5 h-3.5" />

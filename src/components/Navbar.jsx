@@ -217,7 +217,7 @@ export function Navbar({ toggleTheme, isDark }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Behance Profile"
-            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none select-none touch-manipulation"
           >
             <BehanceIcon className="w-4 h-4" />
           </a>
@@ -226,7 +226,7 @@ export function Navbar({ toggleTheme, isDark }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram Profile"
-            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none select-none touch-manipulation"
           >
             <InstagramIcon className="w-4 h-4" />
           </a>
@@ -235,7 +235,7 @@ export function Navbar({ toggleTheme, isDark }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook Profile"
-            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none select-none touch-manipulation"
           >
             <FacebookIcon className="w-4 h-4" />
           </a>
@@ -342,7 +342,7 @@ export function Navbar({ toggleTheme, isDark }) {
               href={personalInfo.behanceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none select-none touch-manipulation"
               aria-label="Behance"
             >
               <BehanceIcon className="w-5 h-5" />
@@ -351,7 +351,7 @@ export function Navbar({ toggleTheme, isDark }) {
               href={personalInfo.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none select-none touch-manipulation"
               aria-label="Instagram"
             >
               <InstagramIcon className="w-5 h-5" />
@@ -360,7 +360,7 @@ export function Navbar({ toggleTheme, isDark }) {
               href={personalInfo.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none select-none touch-manipulation"
               aria-label="Facebook"
             >
               <FacebookIcon className="w-5 h-5" />

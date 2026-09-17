@@ -101,7 +101,7 @@ export function Modal({
             type="button"
             onClick={handleClose}
             aria-label="Close dialog"
-            className="rounded-xl p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 hover:rotate-90 active:scale-90 focus:outline-none focus:ring-2 focus:ring-blue-500/50 flex-shrink-0 cursor-pointer"
+            className="rounded-xl p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 hover:rotate-90 active:scale-90 outline-none focus:outline-none flex-shrink-0 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

@@ -50,13 +50,13 @@ export function Connect() {
                   href={card.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 select-none touch-manipulation"
+                  className="block group outline-none select-none touch-manipulation cursor-pointer"
                 >
                   <Card
                     spotlight={true}
                     tilt={true}
                     shimmer={true}
-                    className="p-5 flex items-center justify-between transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1 active:scale-[0.985]"
+                    className="p-5 flex items-center justify-between transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-11 h-11 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60 flex items-center justify-center text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-white group-hover:border-blue-300 dark:group-hover:border-zinc-600 group-hover:scale-105 transition-all duration-300">

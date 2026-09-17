@@ -170,9 +170,9 @@ export function Resume({ onShowToast }) {
                   onClick={handleDownload}
                   disabled={downloadState === 'downloading'}
                   aria-label="Download resume"
-                  className={`relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 flex-1 shadow-sm select-none cursor-pointer active:scale-[0.98] min-h-[46px] outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 touch-manipulation ${
+                  className={`relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 flex-1 shadow-sm select-none cursor-pointer active:scale-[0.98] min-h-[46px] outline-none touch-manipulation ${
                     downloadState === 'completed'
-                      ? 'bg-emerald-600 text-white shadow-emerald-500/25 ring-2 ring-emerald-500/50'
+                      ? 'bg-emerald-600 text-white shadow-emerald-500/25'
                       : downloadState === 'downloading'
                       ? 'bg-zinc-900 text-white dark:bg-zinc-800 cursor-wait'
                       : 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-100 hover:shadow-md'
@@ -211,7 +211,7 @@ export function Resume({ onShowToast }) {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-medium text-xs sm:text-sm bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer min-h-[46px] active:scale-[0.98] outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-medium text-xs sm:text-sm bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer min-h-[46px] active:scale-[0.98] outline-none select-none touch-manipulation"
                   title="Expand Full Resume"
                 >
                   <Eye className="w-4 h-4" />

@@ -63,15 +63,11 @@ export function Card({
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       style={{
-        transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.28s ease',
-        WebkitBackfaceVisibility: 'hidden',
-        backfaceVisibility: 'hidden',
-        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
-        isolation: 'isolate',
+        transition: 'border-color 0.25s ease, box-shadow 0.28s ease',
         WebkitTapHighlightColor: 'transparent',
       }}
       className={cn(
-        'relative rounded-2xl border bg-white dark:bg-zinc-900/50 border-zinc-200/90 dark:border-zinc-800/80 transition-all duration-300 overflow-hidden shadow-xs dark:shadow-none will-change-transform touch-manipulation active:scale-[0.985] select-none outline-none focus:outline-none',
+        'relative rounded-2xl border bg-white dark:bg-zinc-900 border-zinc-200/90 dark:border-zinc-800/80 transition-all duration-300 overflow-hidden shadow-xs dark:shadow-none select-none outline-none focus:outline-none touch-manipulation',
         hover &&
           'hover:border-blue-500/40 dark:hover:border-zinc-700 hover:shadow-lg dark:hover:shadow-[0_12px_32px_-8px_rgba(59,130,246,0.15)] group',
         className

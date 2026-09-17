@@ -71,7 +71,7 @@ export function Contact({ onShowToast }) {
             {/* Direct Email Card */}
             <a
               href={`mailto:${contactData.email}`}
-              className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 select-none touch-manipulation cursor-pointer"
+              className="block group outline-none select-none touch-manipulation cursor-pointer"
             >
               <Card
                 spotlight={true}
@@ -129,7 +129,7 @@ export function Contact({ onShowToast }) {
               href={contactData.whatsappUrl || "https://wa.me/918250256798"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 select-none touch-manipulation cursor-pointer"
+              className="block group outline-none select-none touch-manipulation cursor-pointer"
             >
               <Card
                 spotlight={true}
