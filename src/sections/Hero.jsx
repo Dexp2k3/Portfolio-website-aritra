@@ -36,8 +36,8 @@ export function Hero({ onShowToast }) {
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-600/15 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-500/10 dark:bg-blue-500/10 blur-[130px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 2xl:gap-10 items-center">
           
           {/* LEFT COLUMN — INTRODUCTION */}
           <div className="lg:col-span-7 flex flex-col justify-center">
@@ -61,7 +61,7 @@ export function Hero({ onShowToast }) {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.15] sm:leading-[1.1]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-[4rem] font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.15] sm:leading-[1.1] 2xl:leading-[1.08]">
               {personalInfo.headlineGreeting}{' '}
               <span
                 onClick={handleNameClick}
@@ -79,12 +79,12 @@ export function Hero({ onShowToast }) {
             </h1>
 
             {/* Sub-headline / Role */}
-            <h2 className="mt-3 text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
+            <h2 className="mt-3 text-xl sm:text-2xl md:text-3xl 2xl:text-[2rem] font-semibold tracking-tight text-zinc-800 dark:text-zinc-200">
               {personalInfo.role}
             </h2>
 
             {/* Short Supporting Description */}
-            <p className="mt-4 text-sm sm:text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
+            <p className="mt-4 text-sm sm:text-base md:text-lg 2xl:text-[1.15rem] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl 2xl:max-w-2xl">
               {personalInfo.supportingText}
             </p>
 
@@ -169,7 +169,7 @@ export function Hero({ onShowToast }) {
             </div>
 
             {/* Portrait Frame with glowing RGB flowing stroke */}
-            <div className="relative group max-w-[310px] sm:max-w-[360px] lg:max-w-[370px] xl:max-w-[390px] w-full">
+            <div className="relative group max-w-[310px] sm:max-w-[360px] lg:max-w-[370px] xl:max-w-[390px] 2xl:max-w-[425px] w-full">
               {/* Outer Glowing RGB Border Shell (2.5px stroke width) */}
               <div className="relative p-[2.5px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.015]">
                 {/* Smooth Continuous Flowing RGB Conic Gradient */}
