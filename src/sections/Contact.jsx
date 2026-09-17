@@ -71,7 +71,7 @@ export function Contact({ onShowToast }) {
             {/* Direct Email Card */}
             <a
               href={`mailto:${contactData.email}`}
-              className="block group focus:outline-none cursor-pointer"
+              className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 select-none touch-manipulation cursor-pointer"
             >
               <Card
                 spotlight={true}
@@ -103,7 +103,7 @@ export function Contact({ onShowToast }) {
                     type="button"
                     onClick={handleCopyEmail}
                     aria-label="Copy email address"
-                    className={`p-3 rounded-xl border transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                    className={`p-3 rounded-xl border transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center outline-none focus:outline-none select-none touch-manipulation ${
                       copiedEmail
                         ? 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-300 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 scale-105'
                         : 'bg-zinc-100 dark:bg-zinc-800/80 border-zinc-200 dark:border-zinc-700/60 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white active:scale-90 hover:scale-105 shadow-xs'
@@ -129,7 +129,7 @@ export function Contact({ onShowToast }) {
               href={contactData.whatsappUrl || "https://wa.me/918250256798"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block group focus:outline-none cursor-pointer"
+              className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 select-none touch-manipulation cursor-pointer"
             >
               <Card
                 spotlight={true}

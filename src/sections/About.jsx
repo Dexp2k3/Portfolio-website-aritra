@@ -206,7 +206,7 @@ export function About({ onShowToast }) {
           {/* RIGHT COLUMN — DISCIPLINES & TOOLS */}
           <div className="lg:col-span-6 flex flex-col gap-8">
             
-            {/* 4 Design Disciplines with 3D Tilt & Cursor Spotlight */}
+            {/* 4 Design Disciplines with 3D Tilt, Cursor Spotlight & Subtle Shimmer */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               {aboutData.disciplines.map((item, idx) => {
                 const IconComponent = disciplineIcons[item.icon] || PenTool;
@@ -215,8 +215,9 @@ export function About({ onShowToast }) {
                     key={idx}
                     spotlight={true}
                     tilt={true}
+                    shimmer={true}
                     onClick={() => handleDisciplineClick(item)}
-                    className={`p-5 sm:p-6 flex flex-col justify-between min-h-[160px] sm:min-h-[165px] transition-all duration-300 active:scale-[0.98] cursor-pointer ${
+                    className={`p-5 sm:p-6 flex flex-col justify-between min-h-[160px] sm:min-h-[165px] transition-all duration-300 active:scale-[0.98] cursor-pointer select-none touch-manipulation outline-none focus:outline-none ${
                       item.hasEmbed
                         ? 'hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1 group/card'
                         : 'cursor-default'
@@ -241,7 +242,7 @@ export function About({ onShowToast }) {
                             onClick={(e) => e.stopPropagation()}
                             title="Open directly on Behance"
                             aria-label={`Open ${item.title} case study on Behance`}
-                            className="min-w-[34px] min-h-[34px] flex items-center justify-center p-1.5 rounded-lg text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95"
+                            className="min-w-[34px] min-h-[34px] flex items-center justify-center p-1.5 rounded-lg text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                           </a>
@@ -433,7 +434,7 @@ export function About({ onShowToast }) {
                 href={activeEmbedProject.behanceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                className="inline-flex items-center gap-1 font-semibold text-blue-600 dark:text-blue-400 hover:underline outline-none focus:outline-none select-none touch-manipulation"
               >
                 <span>Open in Behance</span>
                 <ExternalLink className="w-3 h-3" />
@@ -454,7 +455,7 @@ export function About({ onShowToast }) {
                 href={activeEmbedProject.behanceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wide transition-all shadow-md active:scale-95 text-center"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold tracking-wide transition-all shadow-md active:scale-95 text-center outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 select-none touch-manipulation"
               >
                 <BehanceIcon className="w-3.5 h-3.5" />
                 <span>Open Full Project on Behance</span>

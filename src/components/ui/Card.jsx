@@ -7,6 +7,7 @@ export function Card({
   hover = false,
   spotlight = false,
   tilt = false,
+  shimmer = false,
   ...props
 }) {
   const cardRef = useRef(null);
@@ -63,9 +64,14 @@ export function Card({
       onTouchCancel={handleTouchEnd}
       style={{
         transition: 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.28s ease',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+        isolation: 'isolate',
+        WebkitTapHighlightColor: 'transparent',
       }}
       className={cn(
-        'relative rounded-2xl border bg-white dark:bg-zinc-900/50 border-zinc-200/90 dark:border-zinc-800/80 transition-all duration-300 overflow-hidden shadow-xs dark:shadow-none will-change-transform touch-manipulation active:scale-[0.985]',
+        'relative rounded-2xl border bg-white dark:bg-zinc-900/50 border-zinc-200/90 dark:border-zinc-800/80 transition-all duration-300 overflow-hidden shadow-xs dark:shadow-none will-change-transform touch-manipulation active:scale-[0.985] select-none outline-none focus:outline-none',
         hover &&
           'hover:border-blue-500/40 dark:hover:border-zinc-700 hover:shadow-lg dark:hover:shadow-[0_12px_32px_-8px_rgba(59,130,246,0.15)] group',
         className
@@ -75,13 +81,18 @@ export function Card({
       {spotlight && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-2xl"
+          className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-2xl z-0"
           style={{
             opacity: 'var(--spotlight-opacity, 0)',
             background:
               'radial-gradient(350px circle at var(--spotlight-x, -500px) var(--spotlight-y, -500px), rgba(59, 130, 246, 0.12), transparent 70%)',
           }}
         />
+      )}
+      {shimmer && (
+        <div aria-hidden="true" className="shimmer-sweep">
+          <div className="shimmer-beam animate-subtle-shimmer" />
+        </div>
       )}
       {children}
     </div>

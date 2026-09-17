@@ -40,7 +40,7 @@ export function Connect() {
             </p>
           </div>
 
-          {/* RIGHT COLUMN — 3 INTERACTIVE SPOTLIGHT PLATFORM CARDS */}
+          {/* RIGHT COLUMN — 3 INTERACTIVE SPOTLIGHT PLATFORM CARDS WITH SUBTLE SHIMMER */}
           <div className="lg:col-span-7 flex flex-col gap-4">
             {connectData.cards.map((card, idx) => {
               const BrandIcon = iconMap[card.type] || BehanceIcon;
@@ -50,11 +50,12 @@ export function Connect() {
                   href={card.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group focus:outline-none"
+                  className="block group rounded-2xl overflow-hidden outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 select-none touch-manipulation"
                 >
                   <Card
                     spotlight={true}
                     tilt={true}
+                    shimmer={true}
                     className="p-5 flex items-center justify-between transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1 active:scale-[0.985]"
                   >
                     <div className="flex items-center gap-4">
