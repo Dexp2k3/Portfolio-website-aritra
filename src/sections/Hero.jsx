@@ -191,6 +191,11 @@ export function Hero({ onShowToast }) {
                   />
                   {/* Subtle glass reflection overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/30 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+                  {/* Subtle Left-to-Right Light Reflection Shimmer */}
+                  <div aria-hidden="true" className="shimmer-sweep pointer-events-none z-10">
+                    <div className="shimmer-beam animate-subtle-shimmer" />
+                  </div>
                 </div>
               </div>
             </div>

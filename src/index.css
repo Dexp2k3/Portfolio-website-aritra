@@ -530,27 +530,27 @@
   animation: grid-wave 14s ease-in-out infinite;
 }
 
-/* Subtle Left-to-Right Premium Shimmer Animation (7s cycle: ~1.7s sweep, ~5.3s calm resting interval) */
+/* Subtle Left-to-Right Premium Shimmer Animation (5.2s cycle: ~1.6s sweep, ~3.6s calm resting interval) */
 @keyframes subtle-shimmer {
   0% {
     transform: translate3d(-160%, 0, 0) skewX(-20deg);
     opacity: 0;
   }
-  3% {
+  4% {
     opacity: 1;
   }
-  24% {
+  30% {
     transform: translate3d(260%, 0, 0) skewX(-20deg);
     opacity: 1;
   }
-  25%, 100% {
+  31%, 100% {
     transform: translate3d(260%, 0, 0) skewX(-20deg);
     opacity: 0;
   }
 }
 
 .animate-subtle-shimmer {
-  animation: subtle-shimmer 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: subtle-shimmer 5.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* Shimmer Light Reflection Sweep Container & Beam */
