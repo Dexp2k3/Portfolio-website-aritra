@@ -10,6 +10,7 @@ export function Modal({
   subtitle,
   children,
   className = '',
+  bodyClassName = '',
   maxWidth = 'max-w-3xl',
 }) {
   const modalRef = useRef(null);
@@ -81,10 +82,10 @@ export function Modal({
         )}
       >
         {/* Top Aesthetic Accent Gradient Line */}
-        <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
+        <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 flex-shrink-0" />
 
         {/* Header */}
-        <div className="flex items-start justify-between p-4 sm:p-6 border-b border-zinc-200/80 dark:border-zinc-800/80 gap-3">
+        <div className="flex items-start justify-between p-4 sm:p-5 border-b border-zinc-200/80 dark:border-zinc-800/80 gap-3 flex-shrink-0">
           <div className="min-w-0 flex-1">
             {title && (
               <h3 id="modal-title" className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white tracking-tight break-words">
@@ -108,7 +109,7 @@ export function Modal({
         </div>
 
         {/* Body */}
-        <div className="p-4 sm:p-6 max-h-[78vh] overflow-y-auto overscroll-contain">
+        <div className={cn(bodyClassName || "p-4 sm:p-6 max-h-[78vh] overflow-y-auto overscroll-contain")}>
           {children}
         </div>
       </div>

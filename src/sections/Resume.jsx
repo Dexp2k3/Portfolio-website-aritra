@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Download, FileText, Check, Sparkles, Maximize2, ExternalLink, Eye, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Download, FileText, Check, Sparkles, Maximize2, Minimize2, ExternalLink, Eye, ZoomIn, ZoomOut, RotateCcw, Expand, Shrink } from 'lucide-react';
 import { resumeData } from '../data/portfolioData';
 import { Card } from '../components/ui/Card';
 import { Modal } from '../components/ui/Modal';
+import { cn } from '../utils/helpers';
 import aritraResumeImg from '../assets/aritra-resume.png';
 
 export function Resume({ onShowToast }) {
@@ -11,6 +12,8 @@ export function Resume({ onShowToast }) {
   const [downloadFormat, setDownloadFormat] = useState('png'); // 'png' | 'pdf'
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalZoom, setModalZoom] = useState(1);
+  const [viewMode, setViewMode] = useState('fit-page'); // 'fit-page' | 'fit-width'
+  const [isFullscreenActive, setIsFullscreenActive] = useState(false);
 
   const handleDownload = (e) => {
     if (e) e.preventDefault();
@@ -62,9 +65,98 @@ export function Resume({ onShowToast }) {
     }, 1250);
   };
 
-  const handleZoomIn = () => setModalZoom((z) => Math.min(2, +(z + 0.25).toFixed(2)));
-  const handleZoomOut = () => setModalZoom((z) => Math.max(0.75, +(z - 0.25).toFixed(2)));
-  const handleResetZoom = () => setModalZoom(1);
+  const openModal = () => {
+    setIsModalOpen(true);
+    setViewMode('fit-page');
+    setModalZoom(1);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setViewMode('fit-page');
+    setModalZoom(1);
+    if (document.fullscreenElement) {
+      try {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      } catch {}
+    }
+  };
+
+  const toggleViewMode = useCallback(() => {
+    setViewMode((prev) => (prev === 'fit-page' ? 'fit-width' : 'fit-page'));
+    setModalZoom(1);
+  }, []);
+
+  const handleZoomIn = useCallback(() => {
+    setModalZoom((z) => Math.min(2.5, +(z + 0.25).toFixed(2)));
+    setViewMode((mode) => (mode === 'fit-page' ? 'fit-width' : mode));
+  }, []);
+
+  const handleZoomOut = useCallback(() => {
+    setModalZoom((z) => {
+      const next = +(z - 0.25).toFixed(2);
+      return next <= 0.6 ? 0.6 : next;
+    });
+  }, []);
+
+  const handleResetZoom = useCallback(() => {
+    setModalZoom(1);
+    setViewMode('fit-page');
+  }, []);
+
+  const toggleNativeFullscreen = () => {
+    try {
+      if (!document.fullscreenElement) {
+        const root = document.documentElement;
+        if (root.requestFullscreen) root.requestFullscreen();
+        else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
+        else if (root.msRequestFullscreen) root.msRequestFullscreen();
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      }
+    } catch {}
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreenActive(Boolean(document.fullscreenElement));
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        handleZoomIn();
+      } else if (e.key === '-' || e.key === '_') {
+        e.preventDefault();
+        handleZoomOut();
+      } else if (e.key === '0') {
+        e.preventDefault();
+        handleResetZoom();
+      } else if (e.key.toLowerCase() === 'f' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        toggleViewMode();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, handleZoomIn, handleZoomOut, handleResetZoom, toggleViewMode]);
 
   return (
     <section id="resume" className="scroll-mt-20 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-900 relative transition-colors duration-300">
@@ -210,7 +302,7 @@ export function Resume({ onShowToast }) {
                 {/* Fullscreen Expand Preview Trigger */}
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={openModal}
                   className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-medium text-xs sm:text-sm bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white transition-all cursor-pointer min-h-[46px] active:scale-[0.98] outline-none select-none touch-manipulation"
                   title="Expand Full Resume"
                 >
@@ -264,7 +356,7 @@ export function Resume({ onShowToast }) {
                   <div className="flex items-center gap-2 flex-shrink-0">
                     <button
                       type="button"
-                      onClick={() => setIsModalOpen(true)}
+                      onClick={openModal}
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 transition-colors cursor-pointer flex-shrink-0"
                       title="View Fullscreen"
                     >
@@ -276,7 +368,7 @@ export function Resume({ onShowToast }) {
 
                 {/* High-Resolution Resume Sheet Display */}
                 <div
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={openModal}
                   className="relative cursor-zoom-in overflow-hidden bg-zinc-100/80 dark:bg-zinc-950/80 p-3 sm:p-5 flex justify-center"
                 >
                   <div className="relative w-full max-w-xl shadow-2xl rounded-xl overflow-hidden bg-white ring-1 ring-zinc-900/5 dark:ring-white/10">
@@ -307,70 +399,119 @@ export function Resume({ onShowToast }) {
 
       </div>
 
-      {/* FULLSCREEN LIGHTBOX MODAL WITH INTERACTIVE ZOOM CONTROLS */}
+      {/* FULLSCREEN LIGHTBOX MODAL WITH INTERACTIVE FIT & ZOOM CONTROLS */}
       <Modal
         isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setModalZoom(1);
-        }}
+        onClose={closeModal}
         title="Aritra Mondal — Professional Profile"
         subtitle="Graphic & UI/UX Designer · Single Page Resume"
-        maxWidth="max-w-5xl"
+        maxWidth="max-w-6xl 2xl:max-w-7xl"
+        className="h-[92vh] sm:h-[94vh] flex flex-col"
+        bodyClassName="p-2 sm:p-4 flex-1 min-h-0 flex flex-col overflow-hidden"
       >
-        <div className="flex flex-col gap-4">
-          {/* Modal Header Actions with Interactive Zoom Toolbar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-zinc-200 dark:border-zinc-800 text-xs font-mono text-zinc-600 dark:text-zinc-400">
-            {/* Zoom Controls */}
-            <div className="flex items-center justify-between sm:justify-start gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60">
-              <div className="flex items-center gap-1">
+        <div className="flex flex-col h-full gap-2 sm:gap-3">
+          {/* Modal Header Actions with Interactive Zoom & View Mode Toolbar */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pb-2.5 border-b border-zinc-200 dark:border-zinc-800 text-xs font-mono text-zinc-600 dark:text-zinc-400 flex-shrink-0">
+            {/* View Mode & Zoom Controls */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              {/* Fit Mode Switcher */}
+              <div className="flex items-center p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setViewMode('fit-page');
+                    setModalZoom(1);
+                  }}
+                  className={cn(
+                    'px-2 sm:px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5',
+                    viewMode === 'fit-page' && modalZoom === 1
+                      ? 'bg-white dark:bg-zinc-700 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                  )}
+                  title="Fit entire single-page resume to screen (no vertical cutoff)"
+                >
+                  <Shrink className="w-3.5 h-3.5" />
+                  <span>Fit Page</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setViewMode('fit-width');
+                    setModalZoom(1);
+                  }}
+                  className={cn(
+                    'px-2 sm:px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5',
+                    viewMode === 'fit-width' && modalZoom === 1
+                      ? 'bg-white dark:bg-zinc-700 text-blue-600 dark:text-blue-400 shadow-sm font-semibold'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
+                  )}
+                  title="Fit width for comfortable reading and vertical scrolling"
+                >
+                  <Expand className="w-3.5 h-3.5" />
+                  <span>Fit Width</span>
+                </button>
+              </div>
+
+              {/* Zoom Controls */}
+              <div className="flex items-center gap-1 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60">
                 <button
                   type="button"
                   onClick={handleZoomOut}
-                  disabled={modalZoom <= 0.75}
+                  disabled={modalZoom <= 0.6}
                   aria-label="Zoom out"
-                  className="p-1.5 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer min-w-[32px] min-h-[32px] flex items-center justify-center"
-                  title="Zoom Out"
+                  className="p-1.5 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer min-w-[28px] min-h-[28px] flex items-center justify-center"
+                  title="Zoom Out (-)"
                 >
                   <ZoomOut className="w-3.5 h-3.5" />
                 </button>
 
-                <span className="px-2 text-[11px] font-semibold text-zinc-900 dark:text-white min-w-[48px] text-center select-none">
-                  {Math.round(modalZoom * 100)}%
+                <span className="px-1.5 text-[11px] font-semibold text-zinc-900 dark:text-white min-w-[42px] text-center select-none">
+                  {viewMode === 'fit-page' && modalZoom === 1 ? '100%' : `${Math.round(modalZoom * 100)}%`}
                 </span>
 
                 <button
                   type="button"
                   onClick={handleZoomIn}
-                  disabled={modalZoom >= 2}
+                  disabled={modalZoom >= 2.5}
                   aria-label="Zoom in"
-                  className="p-1.5 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer min-w-[32px] min-h-[32px] flex items-center justify-center"
-                  title="Zoom In"
+                  className="p-1.5 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer min-w-[28px] min-h-[28px] flex items-center justify-center"
+                  title="Zoom In (+)"
                 >
                   <ZoomIn className="w-3.5 h-3.5" />
                 </button>
-              </div>
 
-              {modalZoom !== 1 && (
-                <button
-                  type="button"
-                  onClick={handleResetZoom}
-                  aria-label="Reset zoom"
-                  className="p-1.5 rounded-lg text-blue-600 dark:text-blue-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors cursor-pointer min-w-[32px] min-h-[32px] flex items-center justify-center"
-                  title="Reset to 100%"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                </button>
-              )}
+                {(modalZoom !== 1 || viewMode !== 'fit-page') && (
+                  <button
+                    type="button"
+                    onClick={handleResetZoom}
+                    aria-label="Reset to Fit Page"
+                    className="p-1.5 rounded-lg text-blue-600 dark:text-blue-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors cursor-pointer min-w-[28px] min-h-[28px] flex items-center justify-center"
+                    title="Reset view (0)"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
             </div>
 
-            {/* Quick Actions in Modal */}
-            <div className="flex items-center justify-end gap-2">
+            {/* Quick Actions: Browser Fullscreen, Open in Tab, Download */}
+            <div className="flex items-center justify-end gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                onClick={toggleNativeFullscreen}
+                className="hidden md:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px]"
+                title={isFullscreenActive ? "Exit Browser Fullscreen" : "Enter True Desktop Fullscreen"}
+              >
+                {isFullscreenActive ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+                <span>{isFullscreenActive ? "Windowed" : "Maximize"}</span>
+              </button>
+
               <a
                 href={downloadFormat === 'pdf' ? resumeData.pdfUrl : resumeData.pngUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[36px]"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px]"
               >
                 <span>Open in Tab</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -379,7 +520,7 @@ export function Resume({ onShowToast }) {
               <button
                 type="button"
                 onClick={handleDownload}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors cursor-pointer min-h-[36px] active:scale-95"
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors cursor-pointer min-h-[34px] active:scale-95"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download {downloadFormat.toUpperCase()}</span>
@@ -387,16 +528,40 @@ export function Resume({ onShowToast }) {
             </div>
           </div>
 
-          {/* High-Resolution Document Scrollable Container */}
-          <div className="overflow-auto max-h-[75vh] flex justify-center bg-zinc-200/50 dark:bg-zinc-950/90 p-3 sm:p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 select-none">
+          {/* Document Canvas Container */}
+          <div
+            className={cn(
+              "flex-1 min-h-0 w-full rounded-xl bg-zinc-200/50 dark:bg-zinc-950/90 border border-zinc-200 dark:border-zinc-800/80 p-2 sm:p-4 select-none relative transition-all",
+              viewMode === 'fit-page' && modalZoom === 1
+                ? "flex items-center justify-center overflow-hidden"
+                : "flex justify-center overflow-auto items-start"
+            )}
+          >
+            {/* The Document Sheet */}
             <div
-              className="transition-transform duration-200 ease-out origin-top shadow-2xl rounded-xl overflow-hidden bg-white ring-1 ring-zinc-900/10"
-              style={{ transform: `scale(${modalZoom})` }}
+              onDoubleClick={toggleViewMode}
+              title="Double-click to toggle Fit Page / Fit Width"
+              className={cn(
+                "transition-all duration-200 ease-out shadow-2xl rounded-lg overflow-hidden bg-white ring-1 ring-zinc-900/10 cursor-pointer",
+                viewMode === 'fit-page' && modalZoom === 1
+                  ? "h-full max-h-full w-auto flex items-center justify-center origin-center"
+                  : "w-full max-w-2xl 2xl:max-w-3xl my-auto origin-top"
+              )}
+              style={
+                modalZoom !== 1
+                  ? { transform: `scale(${modalZoom})` }
+                  : undefined
+              }
             >
               <img
                 src={aritraResumeImg}
                 alt="Aritra Mondal Resume High Definition Full Resolution"
-                className="w-full max-w-2xl h-auto object-contain"
+                className={cn(
+                  "object-contain transition-all select-none",
+                  viewMode === 'fit-page' && modalZoom === 1
+                    ? "h-full max-h-full w-auto max-w-full"
+                    : "w-full h-auto"
+                )}
                 loading="eager"
                 decoding="sync"
               />
