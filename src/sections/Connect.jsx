@@ -1,17 +1,19 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { connectData } from '../data/portfolioData';
-import { BehanceIcon, InstagramIcon, FacebookIcon } from '../components/icons/BrandIcons';
+import { BehanceIcon, InstagramIcon, FacebookIcon, LinkedinIcon } from '../components/icons/BrandIcons';
 import { Card } from '../components/ui/Card';
 
 const iconMap = {
   behance: BehanceIcon,
+  linkedin: LinkedinIcon,
   instagram: InstagramIcon,
   facebook: FacebookIcon,
 };
 
 const badgeMap = {
   behance: 'Full Case Studies & Project Renders',
+  linkedin: 'Professional Network & Experience',
   instagram: 'Visual Experiments & Creative Work',
   facebook: 'Social Updates & Direct Connect',
 };

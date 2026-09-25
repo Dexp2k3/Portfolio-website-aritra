@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { navLinks } from '../data/navigation';
 import { personalInfo } from '../data/portfolioData';
-import { AMLogo, BehanceIcon, InstagramIcon, FacebookIcon } from './icons/BrandIcons';
+import { AMLogo, BehanceIcon, InstagramIcon, FacebookIcon, LinkedinIcon } from './icons/BrandIcons';
 
 export function Navbar({ toggleTheme, isDark }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -222,6 +222,15 @@ export function Navbar({ toggleTheme, isDark }) {
             <BehanceIcon className="w-4 h-4" />
           </a>
           <a
+            href={personalInfo.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="p-2.5 rounded-xl hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 outline-none select-none touch-manipulation"
+          >
+            <LinkedinIcon className="w-4 h-4" />
+          </a>
+          <a
             href={personalInfo.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -346,6 +355,15 @@ export function Navbar({ toggleTheme, isDark }) {
               aria-label="Behance"
             >
               <BehanceIcon className="w-5 h-5" />
+            </a>
+            <a
+              href={personalInfo.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-all duration-200 ease-in-out outline-none select-none touch-manipulation"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="w-5 h-5" />
             </a>
             <a
               href={personalInfo.instagramUrl}

@@ -10,12 +10,13 @@ export const personalInfo = {
   locationDisplay: "DURGAPUR, WEST BENGAL, INDIA",
   email: "mondalaritra47@gmail.com",
   phone: "+91 8250256798",
+  linkedinUrl: "https://www.linkedin.com/in/aritra-mondal-47818943a/?skipRedirect=true",
   behanceUrl: "https://www.behance.net/dexpxaritra",
   instagramUrl: "https://www.instagram.com/the_visual_instinct/",
   facebookUrl: "https://www.facebook.com/profile.php?id=100079742088037",
   resumeUrl: "/Aritra_Mondal_Resume.pdf",
   resumeFileName: "Aritra_Mondal_Resume.pdf",
-  resumeMetadata: "Updated · 2026 · 1.2 MB",
+  resumeMetadata: "Updated · 2026 · 1.5 MB",
 };
 
 export const aboutData = {
@@ -95,13 +96,19 @@ export const resumeData = {
 export const connectData = {
   sectionNumber: "03",
   sectionTitle: "LET'S CONNECT",
-  description: "You can view my complete work on Behance, follow my design updates on Instagram, or get in touch with me directly.",
+  description: "You can view my complete work on Behance, connect professionally on LinkedIn, follow my design updates on Instagram, or get in touch with me directly.",
   cards: [
     {
       platform: "Behance",
       action: "View My Work",
       url: "https://www.behance.net/dexpxaritra",
       type: "behance",
+    },
+    {
+      platform: "LinkedIn",
+      action: "Professional Profile",
+      url: "https://www.linkedin.com/in/aritra-mondal-47818943a/?skipRedirect=true",
+      type: "linkedin",
     },
     {
       platform: "Instagram",

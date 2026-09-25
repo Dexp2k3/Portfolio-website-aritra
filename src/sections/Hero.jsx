@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowDown, ExternalLink, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
-import { BehanceIcon, FacebookIcon, InstagramIcon } from '../components/icons/BrandIcons';
+import { BehanceIcon, FacebookIcon, InstagramIcon, LinkedinIcon } from '../components/icons/BrandIcons';
 import aritraPortrait from '../assets/aritra-portrait.jpg';
 
 const funGreetings = [
@@ -127,6 +127,20 @@ export function Hero({ onShowToast }) {
                   <BehanceIcon className="w-3.5 h-3.5" />
                 </div>
                 <span>Behance</span>
+              </a>
+
+              <span className="text-zinc-300 dark:text-zinc-800 hidden sm:inline">·</span>
+
+              <a
+                href={personalInfo.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 hover:text-zinc-950 dark:hover:text-white transition-all group hover:-translate-y-0.5 min-h-[38px] py-1 outline-none rounded-lg select-none touch-manipulation"
+              >
+                <div className="w-7 h-7 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center group-hover:border-blue-500/40 dark:group-hover:border-zinc-700 group-hover:scale-110 transition-all shadow-xs overflow-hidden">
+                  <LinkedinIcon className="w-3.5 h-3.5" />
+                </div>
+                <span>LinkedIn</span>
               </a>
 
               <span className="text-zinc-300 dark:text-zinc-800 hidden sm:inline">·</span>
