@@ -16,7 +16,7 @@ export const personalInfo = {
   facebookUrl: "https://www.facebook.com/profile.php?id=100079742088037",
   resumeUrl: "/Aritra_Mondal_Resume.pdf",
   resumeFileName: "Aritra_Mondal_Resume.pdf",
-  resumeMetadata: "Updated · 2026 · 1.5 MB",
+  resumeMetadata: "Updated · 2 Pages · 2026",
 };
 
 export const aboutData = {
@@ -80,16 +80,19 @@ export const resumeData = {
   sectionNumber: "02",
   sectionTitle: "MY RESUME",
   description: "Take a look at my professional profile to know more about my education, skills, design experience, and achievements.",
-  fileName: "Aritra_Mondal_Resume.png",
-  fileInfo: "Official Document · 2026",
-  downloadUrl: "/Aritra_Mondal_Resume.png",
+  fileName: "Aritra_Mondal_Resume.pdf",
+  fileInfo: "Official Document · 2 Pages · 2026",
+  downloadUrl: "/Aritra_Mondal_Resume.pdf",
   pdfUrl: "/Aritra_Mondal_Resume.pdf",
   pngUrl: "/Aritra_Mondal_Resume.png",
+  page1PngUrl: "/Aritra_Mondal_Resume_Page1.png",
+  page2PngUrl: "/Aritra_Mondal_Resume_Page2.png",
+  totalPages: 2,
   highlights: [
     { label: "Role", val: "Graphic & UI/UX Designer" },
     { label: "Education", val: "MAAC Durgapur" },
     { label: "Status", val: "Available for Hire" },
-    { label: "Format", val: "Single Page Resume" },
+    { label: "Format", val: "2-Page Resume" },
   ],
 };
 
