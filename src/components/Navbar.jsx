@@ -154,13 +154,18 @@ export function Navbar({ toggleTheme, isDark }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out pt-safe ${
         scrolled
           ? 'bg-zinc-50/85 dark:bg-[#080b11]/85 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/60 shadow-sm dark:shadow-lg'
           : 'bg-transparent border-b border-transparent'
       }`}
+      style={{
+        WebkitBackdropFilter: scrolled ? 'blur(12px)' : undefined,
+        transform: 'translateZ(0)',
+        isolation: 'isolate',
+      }}
     >
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] h-18 flex items-center justify-between py-4">
         {/* Left: AM Monogram Logo & Nav links */}
         <div className="flex items-center gap-8 sm:gap-12">
           <a
@@ -319,9 +324,13 @@ export function Navbar({ toggleTheme, isDark }) {
       {/* Mobile Drawer with Ease-In & Ease-Out Animations */}
       {(isOpen || isClosing) && (
         <div
-          className={`md:hidden border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/95 dark:bg-[#080b11]/95 backdrop-blur-xl px-5 py-4 space-y-4 shadow-2xl ${
+          className={`md:hidden border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/95 dark:bg-[#080b11]/95 backdrop-blur-xl px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] space-y-4 shadow-2xl overscroll-contain ${
             isClosing ? 'animate-nav-drawer-out' : 'animate-nav-drawer-in'
           }`}
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            WebkitBackdropFilter: 'blur(20px)',
+          }}
         >
           <nav className="flex flex-col space-y-1">
             {navLinks.map((link) => {

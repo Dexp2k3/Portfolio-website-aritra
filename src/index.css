@@ -20,6 +20,8 @@
     background-color: #080b11;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
   
   html.light {
@@ -31,13 +33,40 @@
     overflow-x: hidden;
     min-height: 100vh;
     min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   }
 
-  button, a, input, textarea {
+  button, a, input, textarea, select {
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent !important;
   }
+
+  /* Prevent ghost image dragging and callouts on iOS/Mac Safari */
+  img {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* iOS Safe Area & Momentum Scroll Utilities */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+.ios-momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* Smooth, GPU-accelerated Theme Transitions */

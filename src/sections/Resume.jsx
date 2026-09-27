@@ -80,6 +80,36 @@ export function Resume({ onShowToast }) {
     touchStartY.current = null;
   };
 
+  // Detect iOS devices (iPhone, iPad, iPod, or iPad on iOS 13+ reporting as MacIntel with touch)
+  const isIOS = typeof navigator !== 'undefined' && (
+    /iPad|iPhone|iPod/.test(navigator.userAgent || '') ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  );
+
+  // Check if true browser Fullscreen API is supported (supported on macOS Safari & iPad, but not iPhone)
+  const isFullscreenSupported = typeof document !== 'undefined' && Boolean(
+    document.documentElement.requestFullscreen ||
+    document.documentElement.webkitRequestFullscreen
+  );
+
+  // Mac Trackpad two-finger horizontal swipe navigation
+  const lastTrackpadSwipe = useRef(0);
+  const handleTrackpadWheel = (e, context = 'preview') => {
+    if (Math.abs(e.deltaX) > 35 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.6) {
+      const now = Date.now();
+      if (now - lastTrackpadSwipe.current > 350) {
+        lastTrackpadSwipe.current = now;
+        if (e.deltaX > 0) {
+          if (context === 'preview') setActivePreviewPage(2);
+          else if (modalPage === 1) setModalPage(2);
+        } else {
+          if (context === 'preview') setActivePreviewPage(1);
+          else if (modalPage === 2) setModalPage(1);
+        }
+      }
+    }
+  };
+
   const handleDownload = (e, specificFile = null) => {
     if (e) e.preventDefault();
     if (downloadState === 'downloading') return;
@@ -120,16 +150,25 @@ export function Resume({ onShowToast }) {
         fileName = 'Aritra_Mondal_Resume.png';
       }
 
-      // Trigger native download
-      const link = document.createElement('a');
-      link.href = fileUrl;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      if (isIOS) {
+        // On iOS Safari, <a download> does not work for PDFs / local files.
+        // Opening in a new tab triggers iOS native viewer with full Share/Save options (Save to Files / AirDrop / Save Image).
+        window.open(fileUrl, '_blank');
+        if (onShowToast) {
+          onShowToast(`Opened ${fileName} for iOS saving`, 'success');
+        }
+      } else {
+        // Standard desktop (Mac / Windows / Linux) and Android download
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
-      if (onShowToast) {
-        onShowToast(`Downloaded ${fileName}`, 'success');
+        if (onShowToast) {
+          onShowToast(`Downloaded ${fileName}`, 'success');
+        }
       }
 
       // Reset back to idle state after 3.5s
@@ -155,11 +194,11 @@ export function Resume({ onShowToast }) {
     setIsModalOpen(false);
     setViewMode('fit-page');
     setModalZoom(1);
-    if (document.fullscreenElement) {
+    const doc = document;
+    if (doc.fullscreenElement || doc.webkitFullscreenElement) {
       try {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) document.msExitFullscreen();
+        if (doc.exitFullscreen) doc.exitFullscreen();
+        else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
       } catch {}
     }
   };
@@ -188,22 +227,22 @@ export function Resume({ onShowToast }) {
 
   const toggleNativeFullscreen = () => {
     try {
-      if (!document.fullscreenElement) {
-        const root = document.documentElement;
+      const doc = document;
+      const root = document.documentElement;
+      const isFs = Boolean(doc.fullscreenElement || doc.webkitFullscreenElement);
+      if (!isFs) {
         if (root.requestFullscreen) root.requestFullscreen();
         else if (root.webkitRequestFullscreen) root.webkitRequestFullscreen();
-        else if (root.msRequestFullscreen) root.msRequestFullscreen();
       } else {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) document.msExitFullscreen();
+        if (doc.exitFullscreen) doc.exitFullscreen();
+        else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
       }
     } catch {}
   };
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreenActive(Boolean(document.fullscreenElement));
+      setIsFullscreenActive(Boolean(document.fullscreenElement || document.webkitFullscreenElement));
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
@@ -509,12 +548,17 @@ export function Resume({ onShowToast }) {
                   </div>
                 </div>
 
-                {/* High-Resolution Resume Sheet Display with Touch Swipe */}
+                {/* High-Resolution Resume Sheet Display with Touch & Mac Trackpad Gestures */}
                 <div
                   onClick={() => openModal(activePreviewPage)}
                   onTouchStart={handleTouchStart}
                   onTouchEnd={(e) => handleTouchEnd(e, 'preview')}
-                  className="relative cursor-zoom-in overflow-hidden bg-zinc-100/80 dark:bg-zinc-950/80 p-3 sm:p-5 flex flex-col items-center"
+                  onWheel={(e) => handleTrackpadWheel(e, 'preview')}
+                  className="relative cursor-zoom-in overflow-hidden bg-zinc-100/80 dark:bg-zinc-950/80 p-3 sm:p-5 flex flex-col items-center select-none"
+                  style={{
+                    WebkitTouchCallout: 'none',
+                    WebkitUserSelect: 'none',
+                  }}
                 >
                   <div className="relative w-full max-w-xl shadow-2xl rounded-xl overflow-hidden bg-white ring-1 ring-zinc-900/5 dark:ring-white/10 transition-transform duration-300">
                     <img
@@ -523,10 +567,14 @@ export function Resume({ onShowToast }) {
                       className="w-full h-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.01]"
                       loading="eager"
                       decoding="sync"
+                      style={{
+                        WebkitUserDrag: 'none',
+                        userSelect: 'none',
+                      }}
                     />
 
                     {/* Page Content Label Ribbon */}
-                    <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-md bg-zinc-900/85 dark:bg-zinc-900/90 text-white text-[10px] font-mono font-medium backdrop-blur-md shadow-md border border-white/10 pointer-events-none">
+                    <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-md bg-zinc-900/85 dark:bg-zinc-900/90 text-white text-[10px] font-mono font-medium backdrop-blur-md shadow-md border border-white/10 pointer-events-none select-none">
                       {activePreviewPage === 1 ? 'Page 1 · Summary & Projects' : 'Page 2 · Experience & Education'}
                     </div>
                   </div>
@@ -588,7 +636,7 @@ export function Resume({ onShowToast }) {
         title="Aritra Mondal — Professional Profile"
         subtitle="Graphic & UI/UX Designer · 2-Page Resume"
         maxWidth="max-w-6xl 2xl:max-w-7xl"
-        className="h-[92vh] sm:h-[94vh] flex flex-col"
+        className="h-[92vh] h-[92dvh] sm:h-[94vh] sm:h-[94dvh] flex flex-col"
         bodyClassName="p-2 sm:p-4 flex-1 min-h-0 flex flex-col overflow-hidden"
       >
         <div className="flex flex-col h-full gap-2 sm:gap-3">
@@ -745,21 +793,23 @@ export function Resume({ onShowToast }) {
 
             {/* Right Quick Actions: Fullscreen, Open in Tab, Download */}
             <div className="flex items-center justify-end gap-1.5 sm:gap-2">
-              <button
-                type="button"
-                onClick={toggleNativeFullscreen}
-                className="hidden md:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px]"
-                title={isFullscreenActive ? "Exit Browser Fullscreen" : "Enter True Desktop Fullscreen"}
-              >
-                {isFullscreenActive ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
-                <span>{isFullscreenActive ? "Windowed" : "Maximize"}</span>
-              </button>
+              {isFullscreenSupported && (
+                <button
+                  type="button"
+                  onClick={toggleNativeFullscreen}
+                  className="hidden md:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px] touch-manipulation"
+                  title={isFullscreenActive ? "Exit Browser Fullscreen" : "Enter True Desktop Fullscreen"}
+                >
+                  {isFullscreenActive ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+                  <span>{isFullscreenActive ? "Windowed" : "Maximize"}</span>
+                </button>
+              )}
 
               <a
                 href={resumeData.pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px]"
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer min-h-[34px] touch-manipulation"
                 title="Open pristine vector PDF in new browser tab"
               >
                 <span>Open PDF</span>
@@ -769,7 +819,7 @@ export function Resume({ onShowToast }) {
               <button
                 type="button"
                 onClick={handleDownload}
-                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors cursor-pointer min-h-[34px] active:scale-95"
+                className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors cursor-pointer min-h-[34px] active:scale-95 touch-manipulation"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download {downloadFormat.toUpperCase()}</span>
@@ -777,16 +827,20 @@ export function Resume({ onShowToast }) {
             </div>
           </div>
 
-          {/* Document Canvas Container with Touch Gestures */}
+          {/* Document Canvas Container with Touch & Mac Trackpad Gestures */}
           <div
             onTouchStart={handleTouchStart}
             onTouchEnd={(e) => handleTouchEnd(e, 'modal')}
+            onWheel={(e) => handleTrackpadWheel(e, 'modal')}
             className={cn(
-              "flex-1 min-h-0 w-full rounded-xl bg-zinc-200/50 dark:bg-zinc-950/90 border border-zinc-200 dark:border-zinc-800/80 p-2 sm:p-4 select-none relative transition-all",
+              "flex-1 min-h-0 w-full rounded-xl bg-zinc-200/50 dark:bg-zinc-950/90 border border-zinc-200 dark:border-zinc-800/80 p-2 sm:p-4 select-none relative transition-all overscroll-contain",
               viewMode === 'fit-page' && modalZoom === 1 && modalPage !== 'all'
                 ? "flex items-center justify-center overflow-hidden"
                 : "flex justify-center overflow-auto items-start"
             )}
+            style={{
+              WebkitOverflowScrolling: 'touch',
+            }}
           >
             {/* Previous Page Floating Button (Single page mode) */}
             {modalPage === 2 && (
@@ -829,7 +883,7 @@ export function Resume({ onShowToast }) {
                     <button
                       type="button"
                       onClick={(e) => handleDownload(e, 'p1')}
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer touch-manipulation"
                     >
                       Save PNG
                     </button>
@@ -841,6 +895,10 @@ export function Resume({ onShowToast }) {
                       className="w-full h-auto object-contain select-none"
                       loading="eager"
                       decoding="sync"
+                      style={{
+                        WebkitUserDrag: 'none',
+                        userSelect: 'none',
+                      }}
                     />
                   </div>
                 </div>
@@ -852,7 +910,7 @@ export function Resume({ onShowToast }) {
                     <button
                       type="button"
                       onClick={(e) => handleDownload(e, 'p2')}
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer touch-manipulation"
                     >
                       Save PNG
                     </button>
@@ -864,6 +922,10 @@ export function Resume({ onShowToast }) {
                       className="w-full h-auto object-contain select-none"
                       loading="eager"
                       decoding="sync"
+                      style={{
+                        WebkitUserDrag: 'none',
+                        userSelect: 'none',
+                      }}
                     />
                   </div>
                 </div>
@@ -874,7 +936,7 @@ export function Resume({ onShowToast }) {
                 onDoubleClick={toggleViewMode}
                 title="Double-click to toggle Fit Page / Fit Width"
                 className={cn(
-                  "transition-all duration-200 ease-out shadow-2xl rounded-lg overflow-hidden bg-white ring-1 ring-zinc-900/10 cursor-pointer",
+                  "transition-all duration-200 ease-out shadow-2xl rounded-lg overflow-hidden bg-white ring-1 ring-zinc-900/10 cursor-pointer select-none",
                   viewMode === 'fit-page' && modalZoom === 1
                     ? "h-full max-h-full w-auto flex items-center justify-center origin-center"
                     : "w-full max-w-2xl 2xl:max-w-3xl my-auto origin-top"
@@ -896,6 +958,10 @@ export function Resume({ onShowToast }) {
                   )}
                   loading="eager"
                   decoding="sync"
+                  style={{
+                    WebkitUserDrag: 'none',
+                    userSelect: 'none',
+                  }}
                 />
               </div>
             )}

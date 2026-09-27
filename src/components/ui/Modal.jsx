@@ -58,15 +58,17 @@ export function Modal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-y-auto overscroll-contain"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-y-auto overscroll-contain pt-[max(0.75rem,env(safe-area-inset-top))] pb-[max(0.75rem,env(safe-area-inset-bottom))] pl-[max(0.75rem,env(safe-area-inset-left))] pr-[max(0.75rem,env(safe-area-inset-right))]"
+      style={{ WebkitOverflowScrolling: 'touch' }}
     >
-      {/* Backdrop with clean fade in / ease out */}
+      {/* Backdrop with clean fade in / ease out and touch-none for iOS scroll containment */}
       <div
         className={cn(
-          'fixed inset-0 bg-black/75 dark:bg-black/85 backdrop-blur-md transition-opacity',
+          'fixed inset-0 bg-black/75 dark:bg-black/85 backdrop-blur-md transition-opacity touch-none',
           isClosing ? 'animate-backdrop-exit' : 'animate-modal-backdrop'
         )}
         onClick={handleClose}
+        onTouchMove={(e) => e.preventDefault()}
         aria-hidden="true"
       />
 
@@ -80,6 +82,10 @@ export function Modal({
           maxWidth,
           className
         )}
+        style={{
+          WebkitBackfaceVisibility: 'hidden',
+          isolation: 'isolate',
+        }}
       >
         {/* Top Aesthetic Accent Gradient Line */}
         <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 flex-shrink-0" />
@@ -102,14 +108,17 @@ export function Modal({
             type="button"
             onClick={handleClose}
             aria-label="Close dialog"
-            className="rounded-xl p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 hover:rotate-90 active:scale-90 outline-none focus:outline-none flex-shrink-0 cursor-pointer"
+            className="rounded-xl p-2.5 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 hover:rotate-90 active:scale-90 outline-none focus:outline-none flex-shrink-0 cursor-pointer touch-manipulation"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Body */}
-        <div className={cn(bodyClassName || "p-4 sm:p-6 max-h-[78vh] overflow-y-auto overscroll-contain")}>
+        {/* Body with iOS momentum scrolling */}
+        <div
+          className={cn(bodyClassName || "p-4 sm:p-6 max-h-[78vh] max-h-[78dvh] overflow-y-auto overscroll-contain")}
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           {children}
         </div>
       </div>
