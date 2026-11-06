@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Aritra Mondal",
   role: "Graphic & UI/UX Designer",
   eyebrow: "DESIGN — CREATE — IMPROVE",
-  status: "Available for Full-Time Roles & Design Opportunities",
+  status: "Available for Freelance Projects & Design Collaborations",
   headlineGreeting: "Hi, I'm",
   headlineName: "Aritra Mondal.",
   supportingText: "I create clean, functional and visually engaging digital experiences.",
@@ -91,8 +91,8 @@ export const resumeData = {
   highlights: [
     { label: "Role", val: "Graphic & UI/UX Designer" },
     { label: "Education", val: "MAAC Durgapur" },
-    { label: "Status", val: "Available for Hire" },
-    { label: "Format", val: "2-Page Resume" },
+    { label: "Status", val: "Currently Working at The Vital Theory" },
+    { label: "Format", val: "Open to Freelance Work" },
   ],
 };
 
