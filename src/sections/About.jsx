@@ -157,7 +157,7 @@ export function About({ onShowToast }) {
 
   return (
     <section id="about" className="scroll-mt-20 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-900 relative transition-colors duration-300">
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 pl-[max(0.875rem,env(safe-area-inset-left))] pr-[max(0.875rem,env(safe-area-inset-right))]">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -217,7 +217,7 @@ export function About({ onShowToast }) {
                     tilt={true}
                     shimmer={true}
                     onClick={() => handleDisciplineClick(item)}
-                    className={`p-5 sm:p-6 flex flex-col justify-between min-h-[160px] sm:min-h-[165px] transition-all duration-300 active:scale-[0.98] cursor-pointer select-none touch-manipulation outline-none focus:outline-none ${
+                    className={`p-4 xs:p-5 sm:p-6 flex flex-col justify-between min-h-[150px] sm:min-h-[165px] transition-all duration-300 active:scale-[0.98] cursor-pointer select-none touch-manipulation outline-none focus:outline-none ${
                       item.hasEmbed
                         ? 'hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1 group/card'
                         : 'cursor-default'

@@ -31,7 +31,7 @@ export function Contact({ onShowToast }) {
 
   return (
     <section id="contact" className="scroll-mt-20 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-900 relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 pl-[max(0.875rem,env(safe-area-inset-left))] pr-[max(0.875rem,env(safe-area-inset-right))]">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -76,13 +76,13 @@ export function Contact({ onShowToast }) {
               <Card
                 spotlight={true}
                 tilt={true}
-                className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5 cursor-pointer"
+                className="p-5 sm:p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 cursor-pointer"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-13 h-13 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     <Mail className="w-6 h-6" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-mono tracking-wider text-zinc-400 dark:text-zinc-500 uppercase">
                         {contactData.emailActionText || 'Email Me'}
@@ -134,13 +134,13 @@ export function Contact({ onShowToast }) {
               <Card
                 spotlight={true}
                 tilt={true}
-                className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5 cursor-pointer"
+                className="p-5 sm:p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-5 cursor-pointer"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-13 h-13 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     <Phone className="w-6 h-6" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-mono tracking-wider text-zinc-400 dark:text-zinc-500 uppercase">
                         {contactData.phoneActionText || 'Call / WhatsApp'}
@@ -150,7 +150,7 @@ export function Contact({ onShowToast }) {
                         Available
                       </span>
                     </div>
-                    <div className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-white mt-0.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                    <div className="text-base sm:text-lg font-semibold text-zinc-900 dark:text-white mt-0.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors break-words">
                       {contactData.phone}
                     </div>
                   </div>

@@ -21,7 +21,7 @@ const badgeMap = {
 export function Connect() {
   return (
     <section id="connect" className="scroll-mt-20 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-900 relative transition-colors duration-300">
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 pl-[max(0.875rem,env(safe-area-inset-left))] pr-[max(0.875rem,env(safe-area-inset-right))]">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
@@ -58,28 +58,28 @@ export function Connect() {
                     spotlight={true}
                     tilt={true}
                     shimmer={true}
-                    className="p-5 flex items-center justify-between transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1"
+                    className="p-4 sm:p-5 flex items-center justify-between gap-3 transition-all duration-300 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:shadow-xl dark:hover:shadow-[0_12px_32px_-10px_rgba(59,130,246,0.2)] hover:-translate-y-1"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60 flex items-center justify-center text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-white group-hover:border-blue-300 dark:group-hover:border-zinc-600 group-hover:scale-105 transition-all duration-300">
+                    <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/60 flex items-center justify-center text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-white group-hover:border-blue-300 dark:group-hover:border-zinc-600 group-hover:scale-105 transition-all duration-300 flex-shrink-0">
                         <BrandIcon className="w-4 h-4" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          <span className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
                             {card.platform}
                           </span>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-500 dark:text-zinc-400 hidden sm:inline">
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-500 dark:text-zinc-400 hidden sm:inline flex-shrink-0">
                             {badgeMap[card.type]}
                           </span>
                         </div>
-                        <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 truncate">
                           {card.action}
                         </div>
                       </div>
                     </div>
 
-                    <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800/40 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-blue-600 dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800/40 flex items-center justify-center text-zinc-400 dark:text-zinc-500 group-hover:text-blue-600 dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0">
                       <ExternalLink className="w-4 h-4" />
                     </div>
                   </Card>

@@ -285,7 +285,7 @@ export function Resume({ onShowToast }) {
 
   return (
     <section id="resume" className="scroll-mt-20 py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-900 relative transition-colors duration-300">
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 pl-[max(0.875rem,env(safe-area-inset-left))] pr-[max(0.875rem,env(safe-area-inset-right))]">
         
         {/* TOP SECTION HEADER */}
         <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-zinc-500 dark:text-zinc-400 uppercase mb-4 select-none">
@@ -311,7 +311,7 @@ export function Resume({ onShowToast }) {
 
             {/* Quick Resume Highlights Pills */}
             {resumeData.highlights && (
-              <div className="grid grid-cols-2 gap-2.5 text-xs font-mono">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-2.5 text-xs font-mono">
                 {resumeData.highlights.map((item, idx) => (
                   <div
                     key={idx}
@@ -332,7 +332,7 @@ export function Resume({ onShowToast }) {
             <Card
               spotlight={true}
               tilt={false}
-              className="p-5 sm:p-6 flex flex-col gap-5 border-blue-500/20 dark:border-blue-500/20 shadow-md"
+              className="p-4 xs:p-5 sm:p-6 flex flex-col gap-5 border-blue-500/20 dark:border-blue-500/20 shadow-md"
             >
               {/* Card Meta Header - Responsive Stack on Mobile */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
@@ -357,7 +357,7 @@ export function Resume({ onShowToast }) {
                   <button
                     type="button"
                     onClick={() => setDownloadFormat('pdf')}
-                    className={`px-3.5 py-1.5 min-h-[34px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
+                    className={`px-3 sm:px-3.5 py-1.5 min-h-[36px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
                       downloadFormat === 'pdf'
                         ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-sm'
                         : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
@@ -368,7 +368,7 @@ export function Resume({ onShowToast }) {
                   <button
                     type="button"
                     onClick={() => setDownloadFormat('png')}
-                    className={`px-3.5 py-1.5 min-h-[34px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
+                    className={`px-3 sm:px-3.5 py-1.5 min-h-[36px] rounded-lg transition-all cursor-pointer flex items-center justify-center font-bold ${
                       downloadFormat === 'png'
                         ? 'bg-white dark:bg-zinc-900 text-blue-600 dark:text-blue-400 shadow-sm'
                         : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'

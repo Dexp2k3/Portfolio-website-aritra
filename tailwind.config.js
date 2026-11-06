@@ -7,6 +7,11 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xs': '420px',
+        '3xl': '1920px',
+        '4k': '2560px',
+      },
       spacing: {
         '4.5': '1.125rem',
       },

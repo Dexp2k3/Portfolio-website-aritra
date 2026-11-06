@@ -36,23 +36,23 @@ export function Hero({ onShowToast }) {
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-600/15 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-500/10 dark:bg-blue-500/10 blur-[130px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 2xl:gap-10 items-center">
+      <div className="max-w-6xl xl:max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8 pl-[max(0.875rem,env(safe-area-inset-left))] pr-[max(0.875rem,env(safe-area-inset-right))] relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-8 2xl:gap-10 items-center">
           
           {/* LEFT COLUMN — INTRODUCTION */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Status / Availability Badge */}
             <div
               onClick={() => onShowToast && onShowToast('Available for projects', 'success')}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 text-xs font-mono mb-5 w-fit select-none shadow-xs hover:shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 text-[11px] sm:text-xs font-mono mb-5 max-w-full select-none shadow-xs hover:shadow-md hover:scale-[1.02] sm:hover:scale-105 active:scale-95 transition-all cursor-pointer group"
               title="Click to learn more"
             >
-              <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2 flex-shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
               </span>
-              <span>{personalInfo.status}</span>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] text-blue-500">✦</span>
+              <span className="break-words leading-tight">{personalInfo.status}</span>
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] text-blue-500 flex-shrink-0">✦</span>
             </div>
 
             {/* Eyebrow with interactive tracking */}
@@ -61,7 +61,7 @@ export function Hero({ onShowToast }) {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-[4rem] font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.15] sm:leading-[1.1] 2xl:leading-[1.08]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl 2xl:text-[4rem] font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.15] sm:leading-[1.1] 2xl:leading-[1.08] break-words">
               {personalInfo.headlineGreeting}{' '}
               <span
                 onClick={handleNameClick}
@@ -177,13 +177,13 @@ export function Hero({ onShowToast }) {
           <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center relative">
             
             {/* Interactive Floating Badge 1 (Top-Left of Portrait) - Visible on Mobile & Desktop */}
-            <div className="flex absolute -top-4 -left-1 sm:-top-5 sm:left-0 z-20 items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200/90 dark:border-zinc-800 shadow-lg text-[11px] sm:text-xs font-mono text-zinc-800 dark:text-zinc-200 animate-float select-none pointer-events-auto hover:scale-105 transition-transform cursor-default">
-              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500" />
+            <div className="flex absolute -top-4 left-1 sm:-top-5 sm:left-0 z-20 items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-zinc-200/90 dark:border-zinc-800 shadow-lg text-[10px] sm:text-xs font-mono text-zinc-800 dark:text-zinc-200 animate-float select-none pointer-events-auto hover:scale-105 transition-transform cursor-default">
+              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 flex-shrink-0" />
               <span>Visual Storyteller</span>
             </div>
 
             {/* Portrait Frame with glowing RGB flowing stroke */}
-            <div className="relative group max-w-[310px] sm:max-w-[360px] lg:max-w-[370px] xl:max-w-[390px] 2xl:max-w-[425px] w-full">
+            <div className="relative group max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] lg:max-w-[370px] xl:max-w-[390px] 2xl:max-w-[425px] 3xl:max-w-[460px] w-full">
               {/* Outer Glowing RGB Border Shell (2.5px stroke width) */}
               <div className="relative p-[2.5px] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.015]">
                 {/* Smooth Continuous Flowing RGB Conic Gradient */}
@@ -215,10 +215,10 @@ export function Hero({ onShowToast }) {
             </div>
 
             {/* Location marker below portrait */}
-            <div className="mt-4 flex items-center gap-2 text-xs font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase select-none">
+            <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-end gap-2 text-[11px] sm:text-xs font-mono tracking-wider text-zinc-500 dark:text-zinc-400 uppercase select-none text-center">
               <span>BASED IN {personalInfo.locationDisplay}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block animate-pulse" />
-              <span>—</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block animate-pulse flex-shrink-0" />
+              <span className="hidden xs:inline">—</span>
             </div>
           </div>
 

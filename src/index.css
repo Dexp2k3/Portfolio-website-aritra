@@ -64,9 +64,76 @@
 .pr-safe {
   padding-right: env(safe-area-inset-right, 0px);
 }
+.px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+.py-safe {
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
 .ios-momentum-scroll {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+}
+
+/* 4K and Large TV Displays - 10-foot UI scaling */
+@media (min-width: 2560px) {
+  :root {
+    font-size: 18px;
+  }
+}
+@media (min-width: 3840px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+/* Mobile landscape viewports (e.g. phones rotated horizontally) */
+@media (max-height: 520px) and (orientation: landscape) {
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
+
+/* Ultra-compact / Smartwatch / Wear OS (viewport width < 320px) */
+@media (max-width: 319px) {
+  :root {
+    font-size: 14px;
+  }
+  
+  section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .container-responsive,
+  main > section > div {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+  }
+
+  .smartwatch-hidden {
+    display: none !important;
+  }
+
+  h1, h2, h3, p, span, a, div {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Prefers Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Smooth, GPU-accelerated Theme Transitions */

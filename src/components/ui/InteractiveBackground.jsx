@@ -151,7 +151,7 @@ export function InteractiveBackground() {
       <div className="absolute bottom-[-10%] left-[20%] w-[360px] sm:w-[580px] h-[360px] sm:h-[580px] rounded-full bg-gradient-to-tr from-purple-600/[0.04] via-blue-500/[0.02] to-transparent dark:from-purple-600/[0.05] dark:via-blue-500/[0.03] dark:to-transparent blur-[130px] sm:blur-[150px] animate-aurora-3 will-change-transform" />
 
       {/* Cosmic Orbital Halo Rings (Subtle, non-intrusive) */}
-      <div className="absolute -top-[60px] -right-[60px] sm:top-[-80px] sm:right-[5%] pointer-events-none flex items-center justify-center opacity-70">
+      <div className="absolute -top-[60px] -right-[60px] sm:top-[-80px] sm:right-[5%] pointer-events-none flex items-center justify-center opacity-70 smartwatch-hidden">
         {/* Outer Orbit (Dashed) */}
         <div className="w-[360px] h-[360px] sm:w-[540px] sm:h-[540px] md:w-[720px] md:h-[720px] rounded-full border border-dashed border-blue-500/10 dark:border-blue-400/12 animate-spin-slow flex items-center justify-center">
           {/* Outer Orbit Satellite Accent Node */}
@@ -169,11 +169,11 @@ export function InteractiveBackground() {
       </div>
 
       {/* Cyber Shooting Light Streaks (Softened) */}
-      <div className="absolute top-[8%] left-[10%] w-48 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/35 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-1" />
-      <div className="absolute top-[35%] left-[25%] w-56 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-2" />
+      <div className="absolute top-[8%] left-[10%] w-48 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/35 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-1 smartwatch-hidden" />
+      <div className="absolute top-[35%] left-[25%] w-56 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400/30 to-transparent blur-[0.5px] -rotate-[35deg] animate-streak-2 smartwatch-hidden" />
 
       {/* Subtle Radar Matrix Scan Wave (Softened) */}
-      <div className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/15 dark:via-cyan-400/20 to-transparent blur-[1px] animate-grid-wave" />
+      <div className="absolute left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-400/15 dark:via-cyan-400/20 to-transparent blur-[1px] animate-grid-wave smartwatch-hidden" />
 
       {/* Rising Cosmic Stardust Embers (Softened, gentle twinkle) */}
       {[
