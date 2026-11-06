@@ -22,8 +22,8 @@ export const personalInfo = {
 export const aboutData = {
   sectionNumber: "01",
   sectionTitle: "ABOUT ME",
-  descriptionP1: "I’m Aritra Mondal, a Graphic & UI/UX designer who enjoys turning ideas into clear, thoughtful, and visually engaging experiences.",
-  descriptionP2: "I believe good design is more than just how something looks — it’s about understanding the problem, finding the right direction, and creating something that feels simple, purposeful, and easy to connect with.",
+  descriptionP1: "I’m Aritra Mondal, a Graphic & UI/UX Designer who enjoys turning ideas into clear, thoughtful, and visually engaging experiences.",
+  descriptionP2: "I believe good design is more than just how something looks. It’s about understanding the problem, finding the right direction, and creating something that feels simple, purposeful, and easy to connect with.",
   motto: ["SIMPLE IDEAS", "BIGGER IMPACT"],
   disciplines: [
     {

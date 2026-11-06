@@ -179,13 +179,13 @@ export function About({ onShowToast }) {
               <div className="space-y-5 text-zinc-800 dark:text-zinc-200 text-base sm:text-lg leading-relaxed font-medium">
                 <p>
                   I’m <span className="text-zinc-950 dark:text-white font-bold">Aritra Mondal</span>, a{' '}
-                  <span className="text-zinc-950 dark:text-white font-bold">Graphic & UI/UX designer</span> who enjoys turning ideas into{' '}
-                  <span className="text-zinc-950 dark:text-white font-bold">clear, thoughtful, and visually engaging experiences</span>.
+                  <span className="text-zinc-950 dark:text-white font-bold">Graphic & UI/UX Designer</span> who enjoys turning ideas into{' '}
+                  <span className="text-zinc-950 dark:text-white font-bold">clear, thoughtful, and visually engaging experiences.</span>
                 </p>
                 <p>
-                  I believe good design is more than just how something looks — it’s about{' '}
+                  I believe good design is more than just how something looks. It’s about{' '}
                   <span className="text-zinc-950 dark:text-white font-bold">understanding the problem</span>, finding the right direction, and creating something that feels{' '}
-                  <span className="text-zinc-950 dark:text-white font-bold">simple, purposeful, and easy to connect with</span>.
+                  <span className="text-zinc-950 dark:text-white font-bold">simple, purposeful, and easy to connect with.</span>
                 </p>
               </div>
             </div>
