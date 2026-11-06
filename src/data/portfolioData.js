@@ -52,11 +52,11 @@ export const aboutData = {
     },
     {
       title: "Branding",
-      sub: "& Visual Design",
+      sub: "& Visual Identity",
       icon: "shapes",
       hasEmbed: true,
-      embedUrl: "https://www.behance.net/embed/project/255449197?ilo0=1",
-      behanceUrl: "https://www.behance.net/gallery/255449197/Graphic-Design-Portfolio-2026-Creative-Works",
+      embedUrl: "https://www.behance.net/embed/project/257427465?ilo0=1",
+      behanceUrl: "https://www.behance.net/gallery/257427465/Creatiwise-Brand-Identity-Logo-Design",
     },
   ],
   tools: [

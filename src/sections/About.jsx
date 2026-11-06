@@ -231,9 +231,23 @@ export function About({ onShowToast }) {
                       {/* Featured Project Trigger Tag & Direct External Icon */}
                       {item.hasEmbed && (
                         <div className="flex items-center gap-1.5">
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/30 group-hover/card:scale-105 transition-all duration-200">
-                            <span>Case Study</span>
-                          </span>
+                          {item.title === 'Branding' ? (
+                            <a
+                              href={item.behanceUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title="Open case study on Behance"
+                              aria-label="Open Branding case study on Behance"
+                              className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/30 group-hover/card:scale-105 transition-all duration-200 cursor-pointer"
+                            >
+                              <span>Case Study</span>
+                            </a>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/30 group-hover/card:scale-105 transition-all duration-200">
+                              <span>Case Study</span>
+                            </span>
+                          )}
 
                           <a
                             href={item.behanceUrl}
